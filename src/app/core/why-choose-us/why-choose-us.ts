@@ -37,4 +37,12 @@ export class WhyChooseUs {
       icon: this.icons.ShieldCheck
     }
   ];
+
+  roadmapSteps = [
+    { number: 1, title: 'Discovery', subtitle: 'Identifying goals & needs', active: false },
+    { number: 2, title: 'Setup', subtitle: 'Infrastructure & Legal', active: false },
+    { number: 3, title: 'Hiring', subtitle: 'Vetting & Talent Acquisition', active: true },
+    { number: 4, title: 'Launch', subtitle: 'Operational kickoff', active: false },
+    { number: 5, title: 'Scale', subtitle: 'Continuous growth', active: false },
+  ];
 }

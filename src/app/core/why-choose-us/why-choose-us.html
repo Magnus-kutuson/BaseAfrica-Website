@@ -25,5 +25,40 @@
       }
     </div>
     
+    <!-- Roadmap Section -->
+    <div class="mt-32 max-w-6xl mx-auto pt-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-primary tracking-tight">Seamless Implementation Roadmap</h2>
+      </div>
+
+      <div class="relative pt-2">
+        <!-- Connecting Line -->
+        <div class="hidden md:block absolute top-[68px] left-[10%] right-[10%] h-[3px] bg-brand-primary z-0"></div>
+
+        <div class="flex flex-col md:flex-row justify-between relative z-10 gap-12 md:gap-4">
+          @for (step of roadmapSteps; track step.number) {
+            <div class="flex flex-col items-center text-center w-full md:w-1/5">
+              <!-- Number Box -->
+              <div class="w-14 h-14 rounded-[12px] flex items-center justify-center text-xl font-bold mb-6 transition-all duration-300"
+                   [class]="step.active ? 'bg-brand-secondary text-white shadow-lg scale-110' : 'bg-brand-primary text-brand-secondary shadow'">
+                {{ step.number }}
+              </div>
+              
+              <!-- Text Content -->
+              <div class="pt-3">
+                <h4 class="text-[19px] font-bold mb-1 transition-colors duration-300"
+                    [class]="step.active ? 'text-brand-secondary' : 'text-brand-primary'">
+                  {{ step.title }}
+                </h4>
+                <p class="text-[13px] text-gray-500 leading-tight px-1">
+                  {{ step.subtitle }}
+                </p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    
   </div>
 </section>
