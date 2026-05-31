@@ -6,6 +6,6 @@ export const routes: Routes = [
     { path: 'services', loadComponent: () => import('./pages/services/services').then(m => m.Services) },
     { path: 'projects', loadComponent: () => import('./pages/projects/projects').then(m => m.Projects) },
     { path: 'about', loadComponent: () => import('./pages/placeholder/placeholder').then(m => m.Placeholder) },
-    { path: 'contact', loadComponent: () => import('./pages/placeholder/placeholder').then(m => m.Placeholder) },
+    { path: 'contact', loadComponent: () => import('./pages/contact/contact').then(m => m.Contact) },
     { path: '**', redirectTo: '/home' }
 ];
