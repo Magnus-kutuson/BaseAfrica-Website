@@ -9,7 +9,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Header {
   navLinks = [
-    { label: 'Home', url: '/' },
+    { label: 'Home', url: '/home' },
     { label: 'Services', url: '/services' },
     { label: 'Projects', url: '/projects' },
     { label: 'About', url: '/about' },
