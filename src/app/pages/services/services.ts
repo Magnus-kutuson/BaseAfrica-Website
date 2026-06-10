@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Header } from '../../core/header/header';
 import { Footer } from '../../core/footer/footer';
 import { LucideAngularModule, Settings, Users, Briefcase, Headset, BarChart, Clock, FileText, Building, Building2, Check } from 'lucide-angular';
 
 @Component({
   selector: 'app-services',
-  imports: [Header, Footer, LucideAngularModule],
+  imports: [Header, Footer, LucideAngularModule, RouterLink],
   templateUrl: './services.html',
   styleUrl: './services.css'
 })

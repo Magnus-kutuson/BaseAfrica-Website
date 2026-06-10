@@ -6,46 +6,32 @@
       
       <!-- Column 1: Brand Info -->
       <div class="md:col-span-1">
-        <h2 class="text-xl font-extrabold text-brand-primary mb-4">BaseAfrica</h2>
+        <h2 class="text-xl font-extrabold text-brand-primary mb-4">
+          <img src="/assets/Rec. Logo.png" alt="OpenBase Africa Logo" class="h-16 w-auto">
+        </h2>
         <p class="text-gray-600 leading-relaxed pr-4 font-medium">
           Professional operational scaling for the global enterprise in the African continent.
         </p>
       </div>
 
-      <!-- Column 2: Quick Links -->
-      <div>
-        <h4 class="text-[11px] font-bold text-brand-primary tracking-[0.15em] uppercase mb-6">Quick Links</h4>
-        <ul class="space-y-4 font-medium">
-          <li><a routerLink="/home" class="text-gray-600 hover:text-brand-secondary transition-colors">Home</a></li>
-          <li><a routerLink="/services" class="text-gray-600 hover:text-brand-secondary transition-colors">Services</a></li>
-          <li><a routerLink="/projects" class="text-gray-600 hover:text-brand-secondary transition-colors">Projects</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Company -->
-      <div>
-        <h4 class="text-[11px] font-bold text-brand-primary tracking-[0.15em] uppercase mb-6">Company</h4>
-        <ul class="space-y-4 font-medium">
-          <li><a routerLink="/about" class="text-gray-600 hover:text-brand-secondary transition-colors">About</a></li>
-          <li><a routerLink="/contact" class="text-gray-600 hover:text-brand-secondary transition-colors">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4: Legal -->
-      <div>
-        <h4 class="text-[11px] font-bold text-brand-primary tracking-[0.15em] uppercase mb-6">Legal</h4>
-        <ul class="space-y-4 font-medium">
-          <li><a routerLink="/" class="text-gray-600 hover:text-brand-secondary transition-colors">Privacy Policy</a></li>
-          <li><a routerLink="/" class="text-gray-600 hover:text-brand-secondary transition-colors">Terms of Service</a></li>
-        </ul>
-      </div>
+      <!-- Link Columns -->
+      @for (column of footerColumns; track column.title) {
+        <div>
+          <h4 class="text-[11px] font-bold text-brand-primary tracking-[0.15em] uppercase mb-6">{{ column.title }}</h4>
+          <ul class="space-y-4 font-medium">
+            @for (link of column.links; track link.label) {
+              <li><a [routerLink]="link.url" class="text-gray-600 hover:text-brand-secondary transition-colors">{{ link.label }}</a></li>
+            }
+          </ul>
+        </div>
+      }
 
     </div>
 
     <!-- Bottom Section: Copyright & Socials -->
     <div class="pt-8 border-t border-gray-300 flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-gray-500 font-medium text-xs md:text-sm">
-        © 2024 BaseAfrica. All rights reserved.
+      <p class="text-brand-primary font-medium text-xs md:text-sm">
+        © 2026 OPENBASE <span class="text-brand-secondary">AFRICA</span>. All rights reserved.
       </p>
       
       <div class="flex items-center gap-6">

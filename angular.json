@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "BaseAfrica": {
+    "OpenBaseAfrica": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -57,10 +57,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "BaseAfrica:build:production"
+              "buildTarget": "OpenBaseAfrica:build:production"
             },
             "development": {
-              "buildTarget": "BaseAfrica:build:development"
+              "buildTarget": "OpenBaseAfrica:build:development"
             }
           },
           "defaultConfiguration": "development"

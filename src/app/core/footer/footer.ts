@@ -15,4 +15,29 @@ export class Footer {
     { name: 'Facebook', icon: Facebook, url: '#' },
     { name: 'Instagram', icon: Instagram, url: '#' }
   ];
+
+  footerColumns = [
+    {
+      title: 'Quick Links',
+      links: [
+        { label: 'Home', url: '/home' },
+        { label: 'Services', url: '/services' },
+        { label: 'Projects', url: '/projects' }
+      ]
+    },
+    {
+      title: 'Company',
+      links: [
+        { label: 'About', url: '/about' },
+        { label: 'Contact', url: '/contact' }
+      ]
+    },
+    {
+      title: 'Legal',
+      links: [
+        { label: 'Privacy Policy', url: '/' },
+        { label: 'Terms of Service', url: '/' }
+      ]
+    }
+  ];
 }
