@@ -6,14 +6,19 @@ import { environment } from '../../../environments';
 export class EmailService {
   constructor() {
     // Init once with your Public Key
-    emailjs.init(environment.emailjs.publicKey);
+    emailjs.init({
+      publicKey: environment.emailjs.publicKey,
+    });
   }
 
   sendEmail(templateParams: Record<string, string>) {
     return emailjs.send(
       environment.emailjs.serviceId,
       environment.emailjs.templateId,
-      templateParams
+      templateParams,
+      {
+        publicKey: environment.emailjs.publicKey,
+      }
     );
   }
 }

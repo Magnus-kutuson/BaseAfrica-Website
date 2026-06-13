@@ -46,6 +46,8 @@ export class Contact {
         email: email ?? '',
         phone: phone ?? '',
         requirements: requirements ?? '',
+        submittedAt: new Date().toLocaleString(),
+
       })
       .then(() => {
         this.status = 'success';
