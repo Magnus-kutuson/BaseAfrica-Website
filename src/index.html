@@ -28,31 +28,75 @@
       visibility: hidden;
     }
 
+    /* Brand container */
+    .app-loader__brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      animation: loader-pulse 2.5s ease-in-out infinite;
+    }
+
     /* Logo mark */
     .app-loader__logo {
-      width: 140px;
-      height: 140px;
-      margin-bottom: 32px;
-      animation: loader-pulse 2.5s ease-in-out infinite;
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
     }
     .app-loader__logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: brightness(0) invert(1);
     }
 
-    /* Brand name */
-    .app-loader__text {
-      color: #ffffff;
-      font-family: 'Trajan Pro', 'Cinzel', serif;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      margin-bottom: 24px;
-      text-transform: uppercase;
+    /* Text block */
+    .app-loader__text-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .app-loader__text span {
-      color: #C8960C;
+
+    /* Title: OPEN BASE */
+    .app-loader__title {
+      color: #ffffff;
+      font-family: 'Cinzel', serif;
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-shadow: 1.5px 1.5px 0px #C8960C;
+      margin-bottom: 6px;
+      white-space: nowrap;
+    }
+
+    /* Subtitle: - AFRICA - */
+    .app-loader__subtitle {
+      color: #ffffff;
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .app-loader__line {
+      width: 24px;
+      height: 1.5px;
+      background-color: #C8960C;
+    }
+
+    /* Tagline */
+    .app-loader__tagline {
+      color: #8db0d3;
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-bottom: 36px;
     }
 
     /* Progress bar track */
@@ -68,7 +112,7 @@
     .app-loader__bar-fill {
       width: 40%;
       height: 100%;
-      background: #C8960C;
+      background: #2A7A4F;
       border-radius: 3px;
       animation: loader-sweep 2.5s ease-in-out infinite;
     }
@@ -88,10 +132,20 @@
 <body>
   <!-- Loading screen shown until Angular bootstraps, then faded out -->
   <div class="app-loader" id="app-loader">
-    <div class="app-loader__logo">
-      <img src="/assets/Main Logo.png" alt="OpenBaseAfrica">
+    <div class="app-loader__brand-container">
+      <div class="app-loader__logo">
+        <img src="/assets/Anchored O White.png" alt="OpenBaseAfrica Icon">
+      </div>
+      <div class="app-loader__text-block">
+        <div class="app-loader__title">OPEN BASE</div>
+        <div class="app-loader__subtitle">
+          <span class="app-loader__line"></span>
+          <span>AFRICA</span>
+          <span class="app-loader__line"></span>
+        </div>
+      </div>
     </div>
-    <div class="app-loader__text">Open<span>Base</span>Africa</div>
+    <div class="app-loader__tagline">Global Operations. African Execution.</div>
     <div class="app-loader__bar-track">
       <div class="app-loader__bar-fill"></div>
     </div>
