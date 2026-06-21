@@ -4,105 +4,228 @@
   <meta charset="utf-8">
   <title>OpenBaseAfrica</title>
   <base href="/">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Inter:wght@100..900&display=swap"
+    rel="stylesheet">
+
   <link rel="icon" type="image/x-icon" href="/assets/Main Logo.png">
+
   <style>
-    /* ── Bootstrap Loading Screen ── */
+    /* ==========================================
+       BOOTSTRAP LOADER
+    ========================================== */
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
     .app-loader {
       position: fixed;
       inset: 0;
       z-index: 99999;
+
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #0D2B4E;
+
+      background-color: #0D2B4E;
+
+      /* Pattern matching screenshot */
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23A68A42' stroke-opacity='0.25' stroke-width='1'%3E%3Crect x='26' y='26' width='28' height='28' transform='rotate(45 40 40)'/%3E%3C/g%3E%3Ccircle cx='0' cy='40' r='1.5' fill='%23A68A42' fill-opacity='0.35'/%3E%3Ccircle cx='40' cy='0' r='1.5' fill='%23A68A42' fill-opacity='0.35'/%3E%3C/svg%3E");
+
+      background-repeat: repeat;
+      background-size: 80px 80px;
+
       font-family: 'Inter', sans-serif;
-      transition: opacity 0.8s ease, visibility 0.8s ease;
+
+      transition:
+        opacity .8s ease,
+        visibility .8s ease;
     }
+
     .app-loader.fade-out {
       opacity: 0;
       visibility: hidden;
+      pointer-events: none;
     }
 
-    /* Logo mark */
+    /* ==========================================
+       LOGO
+    ========================================== */
+
     .app-loader__logo {
+      position: relative;
+
       width: 122px;
       height: 122px;
-      margin-bottom: 30px;
-      position: relative;
-      animation: loader-pulse 2.5s ease-in-out infinite;
+
+      margin-bottom: 28px;
+
+      animation: logoPulse 2.5s ease-in-out infinite;
     }
+
     .app-loader__logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+
       filter: brightness(0) invert(1);
     }
 
-    /* Brand name */
+    /* Rotating gold ring */
+
+    .logo-ring {
+      position: absolute;
+      inset: -19px;
+
+      width: 160px;
+      height: 160px;
+
+      animation: ringRotate 2.8s linear infinite;
+    }
+
+    /* ==========================================
+       BRAND NAME
+    ========================================== */
+
     .app-loader__text {
       color: #ffffff;
-      font-family: 'Trajan Pro', 'Cinzel', serif;
+
+      font-family: 'Cinzel', serif;
       font-size: 24px;
       font-weight: 700;
+
       letter-spacing: 0.08em;
-      margin-bottom: 24px;
       text-transform: uppercase;
+
+      margin-bottom: 24px;
     }
+
     .app-loader__text span {
       color: #C8960C;
     }
 
-    /* Progress bar track */
+    /* ==========================================
+       PROGRESS BAR
+    ========================================== */
+
     .app-loader__bar-track {
       width: 180px;
       height: 3px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 3px;
+
+      background: rgba(255,255,255,0.15);
+
+      border-radius: 999px;
       overflow: hidden;
     }
 
-    /* Progress bar fill – animated sweep */
     .app-loader__bar-fill {
       width: 40%;
       height: 100%;
-      background:  #C8960C;
-      border-radius: 3px;
-      animation: loader-sweep 2.5s ease-in-out infinite;
+
+      background: #C8960C;
+
+      border-radius: inherit;
+
+      animation: loaderSweep 2.5s ease-in-out infinite;
     }
 
-    @keyframes loader-pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.6; transform: scale(0.95); }
+    /* ==========================================
+       ANIMATIONS
+    ========================================== */
+
+    @keyframes logoPulse {
+      0%,100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .75;
+        transform: scale(.96);
+      }
     }
 
-    @keyframes loader-sweep {
-      0%   { transform: translateX(-100%); }
-      50%  { transform: translateX(150%); }
-      100% { transform: translateX(-100%); }
+    @keyframes ringRotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
     }
 
-    @keyframes obaSpin {
-      to { transform: rotate(360deg); }
+    @keyframes loaderSweep {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      50% {
+        transform: translateX(150%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
     }
   </style>
 </head>
+
 <body>
-  <!-- Loading screen shown until Angular bootstraps, then faded out -->
+
+  <!-- Bootstrap Loader -->
   <div class="app-loader" id="app-loader">
+
     <div class="app-loader__logo">
-      <img src="/assets/anchored-o-white.png" alt="OpenBaseAfrica">
-      <svg viewBox="0 0 160 160" style="position:absolute;inset:-19px;width:160px;height:160px;animation:obaSpin 2.8s linear infinite;"><circle cx="80" cy="80" r="74" fill="none" stroke="#C8960C" stroke-width="2" stroke-linecap="round" stroke-dasharray="60 400"></circle></svg>
+
+      <img
+        src="/assets/anchored-o-white.png"
+        alt="OpenBaseAfrica">
+
+      <svg
+        class="logo-ring"
+        viewBox="0 0 160 160"
+        aria-hidden="true">
+
+        <circle
+          cx="80"
+          cy="80"
+          r="74"
+          fill="none"
+          stroke="#C8960C"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-dasharray="60 400">
+        </circle>
+
+      </svg>
+
     </div>
-    <div class="app-loader__text">Open<span>Base</span>Africa</div>
+
+    <div class="app-loader__text">
+      Open<span>Base</span>Africa
+    </div>
+
     <div class="app-loader__bar-track">
       <div class="app-loader__bar-fill"></div>
     </div>
+
   </div>
+
   <app-root></app-root>
+
 </body>
 </html>
