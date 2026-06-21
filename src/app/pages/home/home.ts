@@ -4,7 +4,7 @@ import { Footer } from '../../core/footer/footer';
 import { WhyChooseUs } from '../../core/why-choose-us/why-choose-us';
 import { HeroSection } from '../../core/hero-section/hero-section';
 import { Header } from '../../core/header/header';
-import { RouterOutlet } from '@angular/router';
+// import { RouterOutlet } from '@angular/router';
 import { LucideAngularModule, Search, Building2, Users, Rocket, TrendingUp, Globe, Clock, DollarSign, ShieldCheck, ArrowRight, Check, MapPin } from 'lucide-angular';
 import { CountUp } from '../../directives/count-up';
 import { ScrollReveal } from '../../directives/scroll-reveal';
@@ -14,7 +14,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-home',
   imports: [
     Footer, WhyChooseUs, HeroSection, Header,
-    RouterOutlet, RouterLink, LucideAngularModule, CountUp, ScrollReveal, NgClass
+     RouterLink, LucideAngularModule, CountUp, ScrollReveal, NgClass
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',
