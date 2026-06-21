@@ -30,9 +30,10 @@
 
     /* Logo mark */
     .app-loader__logo {
-      width: 140px;
-      height: 140px;
-      margin-bottom: 32px;
+      width: 122px;
+      height: 122px;
+      margin-bottom: 30px;
+      position: relative;
       animation: loader-pulse 2.5s ease-in-out infinite;
     }
     .app-loader__logo img {
@@ -84,13 +85,18 @@
       50%  { transform: translateX(150%); }
       100% { transform: translateX(-100%); }
     }
+
+    @keyframes obaSpin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
   <!-- Loading screen shown until Angular bootstraps, then faded out -->
   <div class="app-loader" id="app-loader">
     <div class="app-loader__logo">
-      <img src="/assets/Main Logo.png" alt="OpenBaseAfrica">
+      <img src="/assets/anchored-o-white.png" alt="OpenBaseAfrica">
+      <svg viewBox="0 0 160 160" style="position:absolute;inset:-19px;width:160px;height:160px;animation:obaSpin 2.8s linear infinite;"><circle cx="80" cy="80" r="74" fill="none" stroke="#C8960C" stroke-width="2" stroke-linecap="round" stroke-dasharray="60 400"></circle></svg>
     </div>
     <div class="app-loader__text">Open<span>Base</span>Africa</div>
     <div class="app-loader__bar-track">
