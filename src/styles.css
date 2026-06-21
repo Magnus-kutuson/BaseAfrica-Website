@@ -22,7 +22,7 @@
 
 @layer base {
   body {
-    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif, Trajan Pro;
     color: var(--color-navy);
     background: #fff;
     line-height: 1.6;
@@ -75,6 +75,7 @@
 /* Common utility classes based on the spec */
 @layer utilities {
   .kicker {
+    font-family: 'Cinzel', 'Trajan Pro', serif;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.2em;
