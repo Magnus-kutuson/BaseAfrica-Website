@@ -1,32 +1,31 @@
 const fs = require('fs');
 const path = require('path');
 
-// Target directory path relative to this script file
-const envFolder = path.join(__dirname, '../src/environments');
+const envFolder = './src/environments';
 
-// Map Vercel environment variables. They fallback to empty strings locally.
+// Gather variables from Vercel. If running locally, they will default to empty strings.
 const commonFields = `
   publicKey: '${process.env.PUBLIC_KEY || ""}',
   serviceId: '${process.env.SERVICE_ID || ""}',
   templateId: '${process.env.TEMPLATE_ID || ""}',
 `;
 
-// Define development file structure (production: false)
+// Define development file content
 const devEnvContent = `export const environment = {
   production: false,${commonFields}};
 `;
 
-// Define production file structure (production: true)
+// Define production file content
 const prodEnvContent = `export const environment = {
   production: true,${commonFields}};
 `;
 
-// Create the environments directory if it does not exist
+// Create the environments folder if it does not exist yet
 if (!fs.existsSync(envFolder)) {
   fs.mkdirSync(envFolder, { recursive: true });
 }
 
-// Generate both files simultaneously
+// Write both files to your environments folder
 fs.writeFileSync(path.join(envFolder, 'environment.ts'), devEnvContent);
 fs.writeFileSync(path.join(envFolder, 'environment.prod.ts'), prodEnvContent);
 
