@@ -5,19 +5,16 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class EmailService {
   constructor() {
-    emailjs.init({
-      publicKey: environment.emailjs.publicKey,
-    });
-  }
+  emailjs.init({
+    publicKey: environment.publicKey,
+  });
+}
 
-  sendEmail(templateParams: Record<string, string>) {
-    return emailjs.send(
-      environment.emailjs.serviceId,
-      environment.emailjs.templateId,
-      templateParams,
-      {
-        publicKey: environment.emailjs.publicKey,
-      }
-    );
-  }
+sendEmail(templateParams: Record<string, string>) {
+  return emailjs.send(
+    environment.serviceId,
+    environment.templateId,
+    templateParams
+  );
+}
 }
