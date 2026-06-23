@@ -96,15 +96,17 @@ export class Projects {
         { value: '24/7', label: 'Operation' }
       ],
       images: [
-        { src: 'assets/office_setup.png', alt: 'Main operations floor' },
-        { src: 'assets/meeting_room.png', alt: 'Training and meeting room' },
-        { src: 'assets/lounge_area.png', alt: 'Staff lounge and break area' },
-        { src: 'assets/logistics_charts.png', alt: 'Performance dashboards' },
-        { src: 'assets/rd_team.png', alt: 'Operations team at work' }
+        { src: 'assets/Boatpoint/1.jpg', alt: 'Main operations floor' },
+        { src: 'assets/Boatpoint/2.jpg', alt: 'Training and meeting room' },
+        { src: 'assets/Boatpoint/3.jpg', alt: 'Staff lounge and break area' },
+        { src: 'assets/Boatpoint/4.jpg', alt: 'Performance dashboards' },
+        { src: 'assets/Boatpoint/5.jpg', alt: 'Operations team at work' },
+        { src: 'assets/Boatpoint/6.jpg', alt: 'Operations team at work' },
+        { src: 'assets/Boatpoint/7.jpg', alt: 'Operations team at work' }
       ],
       videos: [
-        { src: 'assets/videos/operations-overview.mp4', title: 'Operations Overview' },
-        { src: 'assets/videos/team-interview.mp4', title: 'Team Interview' }
+        { src: 'assets/Boatpoint/video_2026-06-21_23-11-43.mp4', title: 'Operations Overview' },
+        { src: 'assets/Boatpoint/IMG_4924.MP4', title: 'Team Interview' }
       ],
       featured: true
     }
