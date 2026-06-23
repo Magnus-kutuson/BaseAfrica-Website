@@ -42,7 +42,7 @@
             </div>
           </div>
           <!-- Thumbnails row -->
-          <div class="grid grid-cols-4 gap-2">
+          <div class="grid grid-cols-4 gap-2 mb-4">
             @for (img of featuredProject.images.slice(1, 5); track img.src; let i = $index) {
               <div class="relative rounded-[5px] overflow-hidden cursor-pointer group aspect-square card-hover"
                    (click)="openLightbox(featuredProject!.images, i + 1)">
@@ -52,6 +52,24 @@
               </div>
             }
           </div>
+
+          <!-- Videos Section -->
+          @if (featuredProject.videos && featuredProject.videos.length > 0) {
+            <div class="mt-6 pt-6 border-t border-line">
+              <p class="text-sm font-semibold text-navy mb-3">Video Gallery</p>
+              <div class="grid grid-cols-1 gap-3">
+                @for (video of featuredProject.videos; track video.src) {
+                  <div class="relative rounded-lg overflow-hidden group card-hover bg-navy/5">
+                    <video class="w-full aspect-16/9 object-cover bg-navy/10" controls>
+                      <source [src]="video.src" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                    <p class="text-xs text-ink mt-2 px-3 pb-2 font-medium">{{ video.title }}</p>
+                  </div>
+                }
+              </div>
+            </div>
+          }
         </div>
 
         <!-- Right: Overview -->

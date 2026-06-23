@@ -11,6 +11,11 @@ interface ProjectImage {
   alt: string;
 }
 
+interface ProjectVideo {
+  src: string;
+  title: string;
+}
+
 interface Project {
   id: string;
   sector: string;
@@ -21,6 +26,7 @@ interface Project {
   whatChanged: string[];
   metrics: { value: string; label: string }[];
   images: ProjectImage[];
+  videos?: ProjectVideo[];
   featured?: boolean;
 }
 
@@ -95,6 +101,10 @@ export class Projects {
         { src: 'assets/lounge_area.png', alt: 'Staff lounge and break area' },
         { src: 'assets/logistics_charts.png', alt: 'Performance dashboards' },
         { src: 'assets/rd_team.png', alt: 'Operations team at work' }
+      ],
+      videos: [
+        { src: 'assets/videos/operations-overview.mp4', title: 'Operations Overview' },
+        { src: 'assets/videos/team-interview.mp4', title: 'Team Interview' }
       ],
       featured: true
     }
