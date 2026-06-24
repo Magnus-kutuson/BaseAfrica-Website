@@ -16,6 +16,26 @@ interface ProjectVideo {
   title: string;
 }
 
+interface WinMetric {
+  value: string;
+  label: string;
+}
+
+interface WinLarge {
+  type?: 'comparison' | 'metrics';
+  title: string;
+  before?: string; // for comparison
+  after?: string; // for comparison
+  metrics?: WinMetric[]; // for metrics-type card
+  description?: string;
+}
+
+interface WinSmall {
+  title: string;
+  subtitle?: string;
+  description?: string;
+}
+
 interface Project {
   id: string;
   sector: string;
@@ -27,6 +47,7 @@ interface Project {
   metrics: { value: string; label: string }[];
   images: ProjectImage[];
   videos?: ProjectVideo[];
+  wins?: { large: WinLarge[]; small: WinSmall[] };
   featured?: boolean;
 }
 
@@ -108,6 +129,43 @@ export class Projects {
         { src: 'assets/Boatpoint/video_2026-06-21_23-11-43.mp4', title: 'Operations Overview' },
         { src: 'assets/Boatpoint/IMG_4924.MP4', title: 'Team Interview' }
       ],
+      wins: {
+        large: [
+          {
+            type: 'comparison',
+            title: 'Daily Ticket Volume',
+            before: '40 tickets / day',
+            after: '500–1,000 tickets / day',
+            description: 'Covering both parking and main event tickets, across day and night shifts.'
+          },
+          {
+            type: 'metrics',
+            title: 'Sales Generated',
+            metrics: [
+              { value: '$100K+', label: 'Parking sales' },
+              { value: '$400K', label: 'Sporting & concert sales' }
+            ],
+            description: 'Driven by the team we built, trained and run on the ground.'
+          }
+        ],
+        small: [
+          {
+            title: '12–25x',
+            subtitle: 'Higher daily throughput',
+            description: 'From 40 tickets a day to 500–1,000, without a drop in quality.'
+          },
+          {
+            title: '2 lines',
+            subtitle: 'Parking & main events',
+            description: 'One team running both ticket categories side by side.'
+          },
+          {
+            title: '$500K+',
+            subtitle: 'Combined monthly sales',
+            description: 'Parking and event sales generated through the operation.'
+          }
+        ]
+      },
       featured: true
     }
     // ── Add future projects here ──
