@@ -62,7 +62,7 @@ export class About {
       name: 'Tina Presley',
       role: 'US Business Development Advisor',
       bio: 'Bridges the gap between US-based clients and the Ghana operation. Handles scoping, client onboarding, and strategic account growth.',
-      image: ''
+      image: '../assets/Tina.jpeg'
     }
   ];
 
