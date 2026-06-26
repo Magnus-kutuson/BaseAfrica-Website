@@ -181,14 +181,31 @@ export class Projects {
 
   // ─── Helper methods for "What Changed" section ───
   extractLeadPhrase(text: string): string {
-    // Extracts the first few words (up to the first dash or verb phrase)
     const match = text.match(/^([^—–]+?(?:\s+\w+)*?)(?:\s+(?:running|freed|lower|grew|across))/);
-    return match ? match[1] + (match[2] ? ' ' + match[2].split(' ')[0] : '') : text.split(' ').slice(0, 2).join(' ');
+    return match ? match[1] : text.split(' ').slice(0, 2).join(' ');
   }
 
   extractRest(text: string): string {
-    // Extracts the remainder after the lead phrase
     const leadPhrase = this.extractLeadPhrase(text);
     return text.substring(leadPhrase.length).trim();
+  }
+
+  getMetricValue(value?: string): string {
+    if (!value) {
+      return '';
+    }
+
+    return value
+      .replace(/\s*\/\s*/gi, '/')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  getMetricUnit(value?: string): string {
+    if (!value || !/tickets?/i.test(value)) {
+      return '';
+    }
+
+    return 'tickets/day';
   }
 }
