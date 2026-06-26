@@ -26,6 +26,7 @@ interface WinLarge {
   title: string;
   before?: string; // for comparison
   after?: string; // for comparison
+  unit?: string; // for comparison unit label
   metrics?: WinMetric[]; // for metrics-type card
   description?: string;
 }
@@ -142,8 +143,9 @@ export class Projects {
           {
             type: 'comparison',
             title: 'Daily Ticket Volume',
-            before: "40–50 tickets/day",
-            after: "500–1,000 tickets/day",
+            before: "40–50",
+            after: "500–1,000",
+            unit: 'tickets/day',
             description: 'Covering both parking and main event tickets, across day and night shifts.'
           },
           {
@@ -229,7 +231,7 @@ export class Projects {
     {
       name: 'Rafael L.',
       title: 'Head of Customer Operations',
-      quote: 'The 24-hour cover changed how we work. Day shifts, nights, weekends — the queue keeps moving while our head office sleeps, and we wake up to the work already done. That alone paid for the whole arrangement.',
+      quote: 'The 24-hour cover changed how we work. Day shifts, nights, weekends, the queue keeps moving while our head office sleeps, and we wake up to the work already done. That alone paid for the whole arrangement.',
       initials: 'RL'
     },
     {
@@ -241,7 +243,7 @@ export class Projects {
     {
       name: 'Gabriel H.',
       title: 'VP of Growth',
-      quote: 'We started with one branch and a small team, and scaled past a hundred people without rebuilding anything. They added capacity as our volume grew — no scramble, no drop in quality. Scaling finally stopped being the scary part.',
+      quote: 'We started with one branch and a small team, and scaled past a hundred people without rebuilding anything. They added capacity as our volume grew, no scramble, no drop in quality. Scaling finally stopped being the scary part.',
       initials: 'GH'
     }
   ];

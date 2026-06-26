@@ -86,9 +86,9 @@
       @for (member of team; track member.name) {
         <div class="text-center group reveal-on-scroll" [revealIndex]="$index">
           <!-- Headshot placeholder -->
-          <div class="w-full aspect-square bg-mist border border-line mb-6 rounded-lg overflow-hidden relative flex items-center justify-center card-hover">
+          <div class="w-full aspect-3/4 bg-mist border border-line mb-6 rounded-lg overflow-hidden relative flex items-center justify-center card-hover">
             @if (member.image) {
-              <img [src]="member.image" [alt]="member.name" loading="lazy" class="w-full h-full object-cover">
+              <img [src]="member.image" [alt]="member.name" loading="lazy" class="w-full h-auto">
             } @else {
               <!-- Placeholder with initials -->
               <div class="text-navy/20 text-6xl font-extrabold select-none">{{ member.name.split(' ').map(n => n[0]).join('').slice(0, 2) }}</div>

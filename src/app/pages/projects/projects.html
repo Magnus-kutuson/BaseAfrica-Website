@@ -36,7 +36,7 @@
           <div class="relative rounded-lg overflow-hidden shadow-lg cursor-pointer group mb-3 card-hover"
                (click)="openLightbox(featuredProject!.images, 0)">
             <img [src]="featuredProject.images[0].src" [alt]="featuredProject.images[0].alt" loading="lazy"
-                 class="w-full aspect-4/3 object-cover group-hover:scale-105 transition-transform duration-500">
+                 class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
               <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-navy font-semibold text-sm px-4 py-2 rounded-[5px]">Click to enlarge</span>
             </div>
@@ -134,12 +134,17 @@
                       <div class="min-w-0">
                         <div class="text-xs text-stone-500 uppercase font-medium mb-2">Before</div>
                         <div class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-400 wrap-break-word" style="color: #9AA6B5;">{{ getMetricValue(card.before) }}</div>
-                        <div class="text-[10px] uppercase tracking-wide text-stone-400 mt-1" style="color: #9AA6B5;">{{ getMetricUnit(card.before) }}</div>
+                        @if (card.unit) {
+                          <div class="text-[10px] uppercase tracking-wide text-stone-400 mt-1" style="color: #9AA6B5;">{{ card.unit }}</div>
+                        }
                       </div>
                       <div class="text-4xl font-black text-gold shrink-0 mt-1 sm:mt-0" style="color: #C8960C;">»</div>
                       <div class="min-w-0">
                         <div class="text-xs text-gold uppercase font-bold mb-2" style="color: #C8960C;">Now</div>
                         <div class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-navy wrap-break-word">{{ getMetricValue(card.after) }}</div>
+                        @if (card.unit) {
+                          <div class="text-[10px] uppercase tracking-wide text-stone-400 mt-1" style="color: #9AA6B5;">{{ card.unit }}</div>
+                        }
                       </div>
                     </div>
                     @if (card.description) {
@@ -211,11 +216,6 @@
 <!-- Testimonials Section -->
 <section class="py-pad bg-navy-pattern text-white overflow-hidden relative">
   <div class="w-full max-w-295 mx-auto px-6">
-    <div class="text-center mb-16 reveal-on-scroll">
-      <h2 class="text-gold text-sm font-bold tracking-widest uppercase mb-4" style="color: #C8960C; letter-spacing: 0.2em;">IN THEIR WORDS</h2>
-      <p class="text-ink-light text-lead max-w-2xl mx-auto">What the client team says about running with us.</p>
-    </div>
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       @for (testimonial of testimonials; track testimonial.name) {
         <div class="bg-white/5 backdrop-blur-sm border border-gold/20 rounded-lg p-8 reveal-on-scroll" style="border: 1px solid rgba(200,150,12,0.2);">
