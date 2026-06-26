@@ -35,6 +35,7 @@ interface WinSmall {
   title: string;
   subtitle?: string;
   description?: string;
+  highlight?: boolean;
 }
 
 interface Project {
@@ -158,23 +159,26 @@ export class Projects {
             description: 'Driven by the team we built, trained and run on the ground.'
           }
         ],
-        small: [
-          {
-            title: '12–25x',
-            subtitle: 'Higher daily throughput',
-            description: 'From 40 tickets a day to 500–1,000, without a drop in quality.'
-          },
-          {
-            title: '2 lines',
-            subtitle: 'Parking & main events',
-            description: 'One team running both ticket categories side by side.'
-          },
-          {
-            title: '$500K+',
-            subtitle: 'Combined monthly sales',
-            description: 'Parking and event sales generated through the operation.'
-          }
-        ]
+       small: [
+  {
+    title: '12–25×',
+    subtitle: 'Higher daily throughput',
+    description: 'From 40 tickets a day to 500–1,000, without a drop in quality.',
+    highlight: false
+  },
+  {
+    title: '2 lines',
+    subtitle: 'Parking & main events',
+    description: 'One team running both ticket categories side by side.',
+    highlight: false
+  },
+  {
+    title: '$500K+',
+    subtitle: 'Combined monthly sales',
+    description: 'Parking and event sales generated through the operation.',
+    highlight: true
+  }
+]
       },
       featured: true
     }

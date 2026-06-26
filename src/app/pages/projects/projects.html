@@ -176,19 +176,39 @@
               }
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
-              @for (stat of featuredProject.wins.small; track stat.title) {
-                <div class="bg-white border border-stone-200 rounded-sm p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                  <div class="text-2xl md:text-3xl font-extrabold text-gold mb-2" style="color: #C8960C;">{{ stat.title }}</div>
-                  @if (stat.subtitle) {
-                    <div class="text-xs md:text-sm text-navy font-bold mb-3 uppercase" style="color: #0D2B4E;">{{ stat.subtitle }}</div>
-                  }
-                  @if (stat.description) {
-                    <p class="text-sm text-stone-600 leading-relaxed" style="color: #5B6675;">{{ stat.description }}</p>
-                  }
-                </div>
-              }
-            </div>
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+  @for (stat of featuredProject.wins.small; track stat.title) {
+    <div
+      class="bg-white border rounded-sm p-6"
+      style="border-color:#E8E8E8; box-shadow:0 1px 2px rgba(0,0,0,.04);"
+    >
+      <div
+        class="text-3xl font-extrabold mb-2"
+        [style.color]="stat.highlight ? '#C8960C' : '#0D2B4E'"
+      >
+        {{ stat.title }}
+      </div>
+
+      @if (stat.subtitle) {
+        <div
+          class="text-sm font-bold mb-2"
+          style="color:#233A59;"
+        >
+          {{ stat.subtitle }}
+        </div>
+      }
+
+      @if (stat.description) {
+        <p
+          class="text-sm leading-relaxed"
+          style="color:#6B7280;"
+        >
+          {{ stat.description }}
+        </p>
+      }
+    </div>
+  }
+</div>
           </div>
         }
 
