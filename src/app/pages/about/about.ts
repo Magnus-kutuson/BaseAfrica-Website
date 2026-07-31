@@ -58,12 +58,12 @@ export class About {
       bio: 'Runs day-to-day operations across all branches, infrastructure, compliance, facility management, and operational KPIs.',
       image: '../assets/kofi-safo.png'
     },
-    {
-      name: 'Tina Presley',
-      role: 'US Business Development Advisor',
-      bio: 'Bridges the gap between US-based clients and the Ghana operation. Handles scoping, client onboarding, and strategic account growth.',
-      image: '../assets/Tina.jpeg'
-    }
+    // {
+    //   name: 'Tina Presley',
+    //   role: 'US Business Development Advisor',
+    //   bio: 'Bridges the gap between US-based clients and the Ghana operation. Handles scoping, client onboarding, and strategic account growth.',
+    //   image: '../assets/Tina.jpeg'
+    // }
   ];
 
   // Why Ghana
