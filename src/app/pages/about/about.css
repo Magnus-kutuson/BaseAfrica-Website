@@ -1,0 +1,23 @@
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.team-card {
+  flex: 0 1 100%;
+  max-width: 18rem;
+}
+
+@media (min-width: 640px) {
+  .team-card {
+    flex-basis: calc(50% - 0.75rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-card {
+    flex-basis: calc(33.333% - 1rem);
+  }
+}
