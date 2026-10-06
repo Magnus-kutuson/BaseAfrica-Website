@@ -87,6 +87,26 @@
 
   .btn-primary {
     @apply bg-gold text-navy font-bold rounded-[5px] px-5 py-2 transition-all duration-300;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 40%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transition: left 0.6s ease;
+    z-index: -1;
+  }
+
+  .btn-primary:hover::after {
+    left: 120%;
   }
 
   .btn-primary:hover {
@@ -129,6 +149,132 @@
         transparent 2px 26px
       );
   }
+
+  /* ── Cinematic helpers (driven by GSAP + CSS) ── */
+
+  /* Overflow mask used for line/word reveals so glyphs slide up from hidden. */
+  .line-mask {
+    overflow: hidden;
+    display: block;
+  }
+
+  /* Slow Ken Burns breathing for hero / section background images. */
+  .ken-burns {
+    animation: ken-burns 24s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  /* Gentle floating for badges, orbs and accent imagery. */
+  .float-slow {
+    animation: float-y 7s ease-in-out infinite;
+  }
+  .float-slower {
+    animation: float-y 11s ease-in-out infinite;
+  }
+
+  /* Ambient glowing orbs behind dark sections. */
+  .glow-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(60px);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: orb-drift 16s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  /* Animated aurora/gradient wash for navy-pattern backdrops. */
+  .aurora {
+    position: absolute;
+    inset: -30% -10%;
+    pointer-events: none;
+    background:
+      radial-gradient(40% 50% at 20% 30%, rgba(200, 150, 12, 0.18), transparent 70%),
+      radial-gradient(45% 55% at 80% 20%, rgba(42, 122, 79, 0.20), transparent 70%),
+      radial-gradient(50% 60% at 60% 80%, rgba(200, 150, 12, 0.12), transparent 70%);
+    animation: aurora-shift 18s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+  }
+
+  /* Sweeping shine that runs across primary buttons on hover. */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 40%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transition: left 0.6s ease;
+    z-index: -1;
+  }
+  .btn-shine:hover::after {
+    left: 120%;
+  }
+
+  /* Infinite marquee track (duplicate the content inside for a seamless loop). */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes ken-burns {
+  0%   { transform: scale(1.04) translate3d(0, 0, 0); }
+  100% { transform: scale(1.16) translate3d(-1.5%, -1.5%, 0); }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
+}
+
+@keyframes orb-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); opacity: 0.35; }
+  100% { transform: translate3d(40px, -30px, 0) scale(1.25); opacity: 0.6; }
+}
+
+@keyframes aurora-shift {
+  0%   { transform: translate3d(-3%, -2%, 0) scale(1); opacity: 0.7; }
+  100% { transform: translate3d(4%, 3%, 0) scale(1.15); opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Header entrance + nav underline grow */
+@keyframes header-drop {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+/* Transform-only entrances: even if a frame is frozen (backgrounded preview),
+   the elements remain visible rather than stuck at opacity 0. */
+@keyframes fade-slide-down {
+  from { transform: translateY(-14px); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes fade-slide-right {
+  from { transform: translateX(-16px); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); }
+  to   { transform: scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -136,5 +282,27 @@
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .ken-burns,
+  .float-slow,
+  .float-slower,
+  .glow-orb,
+  .aurora,
+  .marquee {
+    animation: none !important;
+  }
+
+  .btn-shine::after {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

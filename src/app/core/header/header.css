@@ -1,3 +1,45 @@
 .header-scrolled {
   box-shadow: 0 6px 24px rgba(13, 43, 78, 0.08);
 }
+
+/* Compact the logo slightly once the page is scrolled. */
+.header-scrolled .header-logo {
+  transform: scale(0.84);
+}
+
+/* Mobile menu is hidden until GSAP (or the fallback class) reveals it. */
+.mobile-menu {
+  visibility: hidden;
+  opacity: 0;
+}
+.mobile-menu.mobile-open {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Nav underline grows from the left on hover. */
+.nav-link {
+  position: relative;
+}
+
+/* ── Entrance (CSS-driven so links always resolve to visible) ── */
+.site-header {
+  animation: header-drop 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.header-logo {
+  animation: fade-slide-right 0.6s 0.15s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.nav-link {
+  animation: fade-slide-down 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.nav-link:nth-child(1) { animation-delay: 0.25s; }
+.nav-link:nth-child(2) { animation-delay: 0.32s; }
+.nav-link:nth-child(3) { animation-delay: 0.39s; }
+.nav-link:nth-child(4) { animation-delay: 0.46s; }
+.nav-link:nth-child(5) { animation-delay: 0.53s; }
+
+.header-cta {
+  animation: pop-in 0.5s 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}

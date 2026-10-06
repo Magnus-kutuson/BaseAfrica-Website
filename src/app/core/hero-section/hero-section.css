@@ -1,0 +1,80 @@
+/* ── Hero: ambient + entrance styling ── */
+
+/* Elements animated in by GSAP start hidden (also the SSR/no-JS fallback below). */
+.hero[data-anim='pending'] .anim {
+  opacity: 0;
+}
+/* Fallback when GSAP is unavailable or motion is reduced. */
+.hero[data-anim='off'] .anim {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero-orb {
+  width: 340px;
+  height: 340px;
+}
+.hero-orb-1 {
+  top: -80px;
+  right: 8%;
+  background: rgba(200, 150, 12, 0.35);
+}
+.hero-orb-2 {
+  bottom: -120px;
+  left: -60px;
+  width: 420px;
+  height: 420px;
+  background: rgba(42, 122, 79, 0.28);
+  animation-duration: 22s;
+}
+
+/* Floating credential badge over the hero image */
+.hero-badge {
+  position: absolute;
+  bottom: -18px;
+  left: -18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
+}
+.hero-badge__num {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--color-navy);
+}
+.hero-badge__label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-ink);
+  line-height: 1.25;
+  max-width: 92px;
+}
+.hero-badge__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2a7a4f;
+  box-shadow: 0 0 0 0 rgba(42, 122, 79, 0.6);
+  animation: pulse-ring 2.2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(42, 122, 79, 0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(42, 122, 79, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(42, 122, 79, 0); }
+}
+
+@media (max-width: 640px) {
+  .hero-badge {
+    bottom: -14px;
+    left: 8px;
+    padding: 10px 14px;
+  }
+}

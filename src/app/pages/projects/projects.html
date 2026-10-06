@@ -275,9 +275,9 @@
         <p class="text-ink font-medium">Additional operations we've built and run across Africa.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" appStaggerChildren [staggerDelay]="0.18">
         @for (project of regularProjects; track project.id) {
-          <div class="bg-white border border-line rounded-lg overflow-hidden flex flex-col group card-hover reveal-on-scroll" [revealIndex]="$index">
+          <div class="bg-white border border-line rounded-lg overflow-hidden flex flex-col group card-hover">
             <!-- Primary image (clickable for gallery) -->
             @if (project.images.length > 0) {
               <div class="relative h-56 w-full overflow-hidden cursor-pointer"

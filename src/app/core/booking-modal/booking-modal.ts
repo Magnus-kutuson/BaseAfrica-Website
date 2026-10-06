@@ -1,10 +1,11 @@
 import { Component, inject, effect, OnDestroy } from '@angular/core';
 import { BookingModalService } from '../../services/booking-modal';
+import { StaggerChildren } from '../../directives/stagger-children';
 
 @Component({
   selector: 'app-booking-modal',
   standalone: true,
-  imports: [],
+  imports: [StaggerChildren],
   templateUrl: './booking-modal.html',
   styleUrl: './booking-modal.css'
 })

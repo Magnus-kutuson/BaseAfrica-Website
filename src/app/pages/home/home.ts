@@ -8,13 +8,14 @@ import { Header } from '../../core/header/header';
 import { LucideAngularModule, Search, Building2, Users, Rocket, TrendingUp, Globe, Clock, DollarSign, ShieldCheck, ArrowRight, Check, MapPin } from 'lucide-angular';
 import { CountUp } from '../../directives/count-up';
 import { ScrollReveal } from '../../directives/scroll-reveal';
+import { StaggerChildren } from '../../directives/stagger-children';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   imports: [
     Footer, WhyChooseUs, HeroSection, Header,
-     RouterLink, LucideAngularModule, CountUp, ScrollReveal, NgClass
+     RouterLink, LucideAngularModule, CountUp, ScrollReveal, StaggerChildren, NgClass
   ],
   templateUrl: './home.html',
   styleUrl: './home.css',

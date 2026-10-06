@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { LucideAngularModule, Building2, IdCard, Landmark } from 'lucide-angular';
 import { ScrollReveal } from '../../directives/scroll-reveal';
+import { StaggerChildren } from '../../directives/stagger-children';
 
 @Component({
   selector: 'app-operations',
-  imports: [LucideAngularModule, ScrollReveal],
+  imports: [LucideAngularModule, ScrollReveal, StaggerChildren],
   templateUrl: './operations.html',
   styleUrl: './operations.css',
 })

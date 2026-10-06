@@ -5,9 +5,9 @@
       <h2 class="text-navy">Core Operational Services</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" appStaggerChildren>
       @for (service of services; track service.title) {
-        <div class="bg-white p-10 card-hover reveal-on-scroll">
+        <div class="bg-white p-10 card-hover">
           <lucide-angular [img]="service.icon" class="w-7 h-7 text-navy mb-6"></lucide-angular>
           <h3 class="text-navy mb-4">{{ service.title }}</h3>
           <p class="text-ink leading-relaxed">{{ service.description }}</p>
@@ -18,8 +18,9 @@
 </section>
 
 <!-- CTA Section -->
-<section class="w-full py-pad bg-navy-pattern text-center">
-  <div class="w-full max-w-295 mx-auto px-6">
+<section class="w-full py-pad bg-navy-pattern text-center relative overflow-hidden">
+  <div class="aurora"></div>
+  <div class="w-full max-w-295 mx-auto px-6 relative z-10">
     <h2 class="text-white mb-8">Build Your African<br class="hidden md:block"/> Operation</h2>
     <p class="text-ink-light text-lead mb-12 max-w-2xl mx-auto">
       Ready to take your business to the next level? Connect with our experts today and start your expansion journey.

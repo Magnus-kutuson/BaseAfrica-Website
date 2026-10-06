@@ -17,6 +17,13 @@
 	z-index: 1;
 }
 
+/* Ambient light layers sit behind the content, not forced to relative. */
+.bg-navy-pattern > .aurora,
+.bg-navy-pattern > .glow-orb {
+	position: absolute;
+	z-index: 0;
+}
+
 .bg-navy-pattern .kicker,
 .bg-navy-pattern h2,
 .bg-navy-pattern .text-white,

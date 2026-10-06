@@ -4,6 +4,7 @@ import { Footer } from '../../core/footer/footer';
 import { LucideAngularModule, X, ChevronLeft, ChevronRight, MapPin, Users, Building2, Clock, Check } from 'lucide-angular';
 import { CountUp } from '../../directives/count-up';
 import { ScrollReveal } from '../../directives/scroll-reveal';
+import { StaggerChildren } from '../../directives/stagger-children';
 
 interface ProjectImage {
   src: string;
@@ -61,7 +62,7 @@ interface Testimonial {
 
 @Component({
   selector: 'app-projects',
-  imports: [Header, Footer,  LucideAngularModule, CountUp, ScrollReveal],
+  imports: [Header, Footer,  LucideAngularModule, CountUp, ScrollReveal, StaggerChildren],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })

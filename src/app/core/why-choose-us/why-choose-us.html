@@ -8,9 +8,9 @@
     </div>
 
     <!-- Features Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" appStaggerChildren>
       @for (feature of features; track feature.title) {
-        <div class="bg-white p-8 card-hover flex flex-col h-full reveal-on-scroll">
+        <div class="bg-white p-8 card-hover flex flex-col h-full">
           
           <!-- Icon Box -->
           <div class="w-12 h-12 bg-navy/5 rounded flex items-center justify-center mb-8">
@@ -29,8 +29,9 @@
 </section>
 
 <!-- Roadmap Section -->
-<section class="w-full py-pad bg-navy-pattern text-white">
-  <div class="w-full max-w-295 mx-auto px-6">
+<section class="w-full py-pad bg-navy-pattern text-white relative overflow-hidden">
+  <div class="aurora"></div>
+  <div class="w-full max-w-295 mx-auto px-6 relative z-10">
     <div class="text-center mb-20 reveal-on-scroll">
       <h2 class="text-white">Seamless Implementation Roadmap</h2>
     </div>
@@ -39,7 +40,7 @@
       <!-- Connecting Line -->
       <div class="hidden md:block absolute top-17 left-0 right-0 w-full h-0.75 bg-white/15 z-0"></div>
 
-      <div class="flex flex-col md:flex-row justify-between relative z-10 gap-12 md:gap-4">
+      <div class="flex flex-col md:flex-row justify-between relative z-10 gap-12 md:gap-4" appStaggerChildren staggerFrom="zoom" [staggerDelay]="0.12">
         @for (step of roadmapSteps; track step.number) {
           <div class="flex flex-col items-center text-center w-full md:w-1/5">
             <!-- Number Box -->

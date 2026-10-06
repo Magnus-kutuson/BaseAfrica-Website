@@ -4,10 +4,12 @@ import { Header } from '../../core/header/header';
 import { Footer } from '../../core/footer/footer';
 import { LucideAngularModule, Shield, Users, Clock, DollarSign, Globe, MapPin, ArrowRight, Check, Building2, TrendingUp } from 'lucide-angular';
 import { ScrollReveal } from '../../directives/scroll-reveal';
+import { Parallax } from '../../directives/parallax';
+import { StaggerChildren } from '../../directives/stagger-children';
 
 @Component({
   selector: 'app-about',
-  imports: [Header, Footer, RouterLink, LucideAngularModule, ScrollReveal],
+  imports: [Header, Footer, RouterLink, LucideAngularModule, ScrollReveal, Parallax, StaggerChildren],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

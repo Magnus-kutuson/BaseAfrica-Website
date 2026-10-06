@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideAngularModule, Facebook, Twitter, Linkedin, Instagram } from 'lucide-angular';
+import { StaggerChildren } from '../../directives/stagger-children';
 
 @Component({
   selector: 'app-footer',
-  imports: [LucideAngularModule, RouterLink],
+  imports: [LucideAngularModule, RouterLink, StaggerChildren],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

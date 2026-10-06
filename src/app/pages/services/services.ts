@@ -4,11 +4,12 @@ import { Header } from '../../core/header/header';
 import { Footer } from '../../core/footer/footer';
 import { LucideAngularModule, Building2, Users, Briefcase, Cog, BarChart3, Headset, Monitor, Wrench, Rocket, Check, ArrowRight } from 'lucide-angular';
 import { ScrollReveal } from '../../directives/scroll-reveal';
+import { StaggerChildren } from '../../directives/stagger-children';
 import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-services',
-  imports: [Header, Footer, LucideAngularModule, RouterLink, ScrollReveal, NgClass],
+  imports: [Header, Footer, LucideAngularModule, RouterLink, ScrollReveal, StaggerChildren, NgClass],
   templateUrl: './services.html',
   styleUrl: './services.css'
 })

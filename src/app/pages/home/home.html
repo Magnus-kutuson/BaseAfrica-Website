@@ -15,9 +15,9 @@
       <p class="text-ink leading-relaxed">Our end-to-end model takes you from idea to fully operational team, without the overhead of doing it yourself.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" appStaggerChildren>
       @for (step of whatWeDoSteps; track step.title) {
-        <div class="relative bg-mist p-8 card-hover group reveal-on-scroll" [revealIndex]="$index">
+        <div class="relative bg-mist p-8 card-hover group">
           <div class="w-12 h-12 bg-navy/5 rounded flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
             <lucide-angular [img]="step.icon" class="w-6 h-6 text-navy"></lucide-angular>
           </div>
@@ -30,16 +30,17 @@
 </section>
 
 <!-- 4. How It Works – Five-Stage Snapshot (reinforced) -->
-<section class="w-full py-pad bg-navy-pattern text-white">
+<section class="w-full py-pad bg-navy-pattern text-white relative overflow-hidden">
+  <div class="aurora"></div>
   <div class="w-full max-w-295 mx-auto px-6">
     <div class="text-center mb-16 reveal-on-scroll">
       <h3 class="kicker mb-4">How It Works</h3>
       <h2 class="text-white">From Discovery to Scale in Five Steps</h2>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6" appStaggerChildren staggerFrom="zoom">
       @for (step of ['Discovery: We learn your goals, workflows & culture', 'Setup: Legal entity, office & infrastructure', 'Workforce Build: Recruit, vet & train your team', 'Launch: Operational kickoff with full support', 'Scale: Continuous growth & performance optimisation']; track step; let i = $index) {
-        <div class="flex flex-col items-center text-center p-6 bg-white/5 border border-white/10 hover:border-gold/40 transition-colors rounded-lg reveal-on-scroll" [revealIndex]="$index">
+        <div class="flex flex-col items-center text-center p-6 bg-white/5 border border-white/10 hover:border-gold/40 transition-colors rounded-lg">
           <div class="w-12 h-12 rounded-full bg-gold text-navy font-extrabold text-xl flex items-center justify-center mb-4">{{ i + 1 }}</div>
           <p class="text-sm font-medium leading-snug">{{ step }}</p>
         </div>
@@ -70,7 +71,7 @@
       </div>
 
       <!-- Right: Metric Grid -->
-      <div class="lg:w-1/2 grid grid-cols-2 gap-4 w-full reveal-on-scroll">
+      <div class="lg:w-1/2 grid grid-cols-2 gap-4 w-full" appStaggerChildren staggerFrom="right">
         @for (metric of trackRecordMetrics; track metric.label) {
           <div class="bg-white p-8 border border-line shadow-sm text-center rounded-lg">
             <div class="text-4xl md:text-5xl font-extrabold text-gold mb-2" [appCountUp]="metric.value">{{ metric.value }}</div>
@@ -92,9 +93,9 @@
       <p class="text-ink leading-relaxed">One partner for setup, talent, management, and compliance, so you can focus on your core business.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" appStaggerChildren>
       @for (service of serviceCards; track service.title) {
-        <a routerLink="/services" class="group bg-mist hover:bg-navy p-8 border border-line hover:border-navy transition-all duration-300 block rounded-lg reveal-on-scroll" [revealIndex]="$index">
+        <a routerLink="/services" class="group bg-mist hover:bg-navy p-8 border border-line hover:border-navy transition-all duration-300 block rounded-lg">
           <lucide-angular [img]="service.icon" class="w-7 h-7 text-gold mb-6"></lucide-angular>
           <h4 class="text-lg font-bold text-navy group-hover:text-white transition-colors mb-3">{{ service.title }}</h4>
           <p class="text-ink group-hover:text-ink-light text-sm leading-relaxed transition-colors">{{ service.description }}</p>
@@ -120,18 +121,17 @@
       <p class="text-ink leading-relaxed">Whether you're testing the waters or building at scale, we have a package that fits.</p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch" appStaggerChildren [staggerDelay]="0.18">
       @for (pkg of packages; track pkg.name) {
-        <div class="bg-white p-8 md:p-10 border flex flex-col transition-shadow rounded-lg reveal-on-scroll"
-             [ngClass]="pkg.featured ? 'border-navy shadow-lg ring-2 ring-navy/20' : 'border-line shadow-sm hover:shadow-md'"
-             [revealIndex]="$index">
+        <div class="bg-white p-8 md:p-10 border flex flex-col transition-shadow rounded-lg"
+             [ngClass]="pkg.featured ? 'border-navy shadow-lg ring-2 ring-navy/20' : 'border-line shadow-sm hover:shadow-md'">
           @if (pkg.featured) {
             <span class="self-start bg-gold text-navy text-xs font-bold uppercase tracking-wide px-3 py-1 mb-4 rounded-sm">Most Popular</span>
           }
           <h4 class="text-2xl font-extrabold text-navy mb-1">{{ pkg.name }}</h4>
           <div class="text-gold font-bold text-lg mb-4">{{ pkg.range }}</div>
           <p class="text-ink text-sm leading-relaxed mb-6">{{ pkg.description }}</p>
-          <ul class="space-y-3 mb-8 flex-1">
+          <ul class="space-y-3 mb-8 flex-1" appStaggerChildren staggerFrom="left" [staggerDelay]="0.1" [staggerDistance]="24">
             @for (item of pkg.highlights; track item) {
               <li class="flex items-center gap-3 text-sm text-ink-nav">
                 <lucide-angular [img]="icons.Check" class="w-4 h-4 text-navy shrink-0"></lucide-angular>
@@ -158,9 +158,9 @@
       <p class="text-ink leading-relaxed">Ghana offers a rare combination of stability, talent, and alignment with Western business norms.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" appStaggerChildren staggerFrom="left">
       @for (marker of trustMarkers; track marker.title) {
-        <div class="flex items-start gap-4 p-6 bg-mist border border-line rounded-lg reveal-on-scroll" [revealIndex]="$index">
+        <div class="flex items-start gap-4 p-6 bg-mist border border-line rounded-lg">
           <div class="w-10 h-10 bg-navy/10 rounded flex items-center justify-center shrink-0">
             <lucide-angular [img]="marker.icon" class="w-5 h-5 text-navy"></lucide-angular>
           </div>
@@ -176,6 +176,7 @@
 
 <!-- 9. Closing Call-to-Action -->
 <section class="w-full py-pad bg-navy-pattern text-center relative overflow-hidden">
+  <div class="aurora"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gold/10 blur-3xl rounded-full"></div>
   <div class="w-full max-w-295 mx-auto px-6 relative z-10 reveal-on-scroll">
     <h2 class="text-white mb-6">Ready to Build Your<br class="hidden md:block"/> Team in Africa?</h2>
