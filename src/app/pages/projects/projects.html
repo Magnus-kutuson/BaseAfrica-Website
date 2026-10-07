@@ -104,7 +104,7 @@
             <lucide-angular [img]="icons.Building2" class="w-5 h-5 text-gold"></lucide-angular>
             What We Did
           </h3>
-          <ul class="space-y-3">
+          <ul class="space-y-3" appStaggerChildren staggerFrom="left" [staggerDelay]="0.1" [staggerDistance]="24">
             @for (item of featuredProject.whatWeDid; track item) {
               <li class="flex items-start gap-3 text-sm text-ink-light">
                 <lucide-angular [img]="icons.Check" class="w-4 h-4 text-gold mt-0.5 shrink-0"></lucide-angular>
@@ -125,7 +125,7 @@
               </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6" appStaggerChildren [staggerDelay]="0.18">
               @for (card of featuredProject.wins.large; track card.title) {
                 @if (card.type === 'comparison') {
                   <div class="bg-white border border-stone-200 rounded-sm p-6" style="box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
@@ -176,7 +176,7 @@
               }
             </div>
 
-           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6" appStaggerChildren staggerFrom="zoom" [staggerDelay]="0.14">
   @for (stat of featuredProject.wins.small; track stat.title) {
     <div
       class="bg-white border rounded-sm p-6"
@@ -215,7 +215,7 @@
         <!-- Operational Wins -->
         <div class="bg-white border border-stone-200 rounded-sm p-8 md:p-9 reveal-on-scroll">
           <div class="text-xs font-bold text-navy uppercase tracking-wide mb-6" style="letter-spacing: 0.1em; color: #0D2B4E;">Operational Wins</div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-10" appStaggerChildren staggerFrom="left" [staggerDelay]="0.1" [staggerDistance]="24">
             @for (item of featuredProject.whatChanged; track item) {
               <div class="flex gap-4">
                 <span class="text-gold shrink-0 mt-0.5" style="color: #C8960C; font-size: 16px;">◆</span>

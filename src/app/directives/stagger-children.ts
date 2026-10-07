@@ -4,9 +4,16 @@ import { AnimationsService } from '../services/animations';
 
 export type StaggerDirection = 'up' | 'left' | 'right' | 'zoom';
 
+/** Nested stagger lists register here so their parent can sequence them. */
+const NESTED = new WeakMap<HTMLElement, StaggerChildren>();
+
 /**
- * Slides a container's children in one after another when it scrolls into view.
+ * Slides a container's children in one after another as each scrolls into view.
  * Use on card grids and bullet lists for a sequential cascade.
+ *
+ * When a stagger list sits inside a staggered card (e.g. bullets in a pricing
+ * card), the parent drives it: the card lands first, then its bullets slide in
+ * one by one.
  *
  * Usage:
  *   <div class="grid" appStaggerChildren> …cards… </div>
@@ -37,57 +44,115 @@ export class StaggerChildren implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!this.isBrowser || this.animations.reducedMotion) return;
 
+    const host = this.el.nativeElement;
+
+    // Inside another stagger container: let the parent sequence us after our card.
+    if (host.parentElement?.closest('[appStaggerChildren]')) {
+      NESTED.set(host, this);
+      return;
+    }
+
     void this.animations.load().then((bundle) => {
       if (this.destroyed || !bundle) return;
-      const { gsap } = bundle;
-      const host = this.el.nativeElement;
-      const children = Array.from(host.querySelectorAll(this.staggerSelector));
+      const { gsap, ScrollTrigger } = bundle;
+      const children = this.items();
       if (children.length === 0) return;
 
-      const from = this.fromVars();
+      // Hide everything up-front so there is no flash before a trigger fires.
+      gsap.set(children, { ...this.fromVars(), opacity: 0 });
+      const nestedByChild = new Map(children.map((c) => [c, this.nestedIn(c)]));
+      nestedByChild.forEach((lists) =>
+        lists.forEach((n) => gsap.set(n.items(), { ...n.fromVars(), opacity: 0 }))
+      );
 
-      // Hide children up-front so there is no flash before the trigger fires.
-      gsap.set(children, { ...from, opacity: 0 });
+      const timelines: gsap.core.Timeline[] = [];
 
-      const tween = gsap.to(children, {
-        x: 0,
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        duration: this.staggerDuration,
-        stagger: this.staggerDelay,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: host, start: 'top 86%', once: true },
-        onComplete: () => {
-          // Release inline styles so hover transforms still work.
-          gsap.set(children, { clearProps: 'transform,opacity' });
+      // Each child triggers as it enters the viewport; children entering
+      // together cascade one after another.
+      const triggers = ScrollTrigger.batch(children, {
+        start: 'top 90%',
+        once: true,
+        onEnter: (batch) => {
+          const tl = gsap.timeline();
+          timelines.push(tl);
+
+          (batch as HTMLElement[]).forEach((child, i) => {
+            const at = i * this.staggerDelay;
+            tl.to(
+              child,
+              {
+                x: 0,
+                y: 0,
+                scale: 1,
+                rotation: 0,
+                opacity: 1,
+                duration: this.staggerDuration,
+                ease: 'back.out(1.5)',
+                clearProps: 'transform,opacity',
+              },
+              at
+            );
+
+            // Bullets start once the card has mostly landed.
+            let nestedAt = at + this.staggerDuration * 0.6;
+            for (const n of nestedByChild.get(child) ?? []) {
+              const items = n.items();
+              tl.to(
+                items,
+                {
+                  x: 0,
+                  y: 0,
+                  scale: 1,
+                  rotation: 0,
+                  opacity: 1,
+                  duration: n.staggerDuration,
+                  stagger: n.staggerDelay,
+                  ease: 'back.out(2)',
+                  clearProps: 'transform,opacity',
+                },
+                nestedAt
+              );
+              nestedAt += items.length * n.staggerDelay;
+            }
+          });
         },
       });
 
       this.cleanup = () => {
-        tween.scrollTrigger?.kill();
-        tween.kill();
+        triggers.forEach((t) => t.kill());
+        timelines.forEach((t) => t.kill());
       };
     });
+  }
+
+  private items(): HTMLElement[] {
+    return Array.from(this.el.nativeElement.querySelectorAll(this.staggerSelector));
+  }
+
+  /** Registered nested stagger lists inside `child`, in document order. */
+  private nestedIn(child: HTMLElement): StaggerChildren[] {
+    return Array.from(child.querySelectorAll<HTMLElement>('[appStaggerChildren]'))
+      .map((el) => NESTED.get(el)).filter((n): n is StaggerChildren => !!n);
   }
 
   private fromVars(): Record<string, number> {
     const d = this.staggerDistance;
     switch (this.staggerFrom) {
       case 'left':
-        return { x: -d };
+        return { x: -d, rotation: -2 };
       case 'right':
-        return { x: d };
+        return { x: d, rotation: 2 };
       case 'zoom':
-        return { scale: 0.85 };
+        return { scale: 0.8, rotation: -3 };
       case 'up':
       default:
-        return { y: d };
+        return { y: d, scale: 0.96 };
     }
   }
 
   ngOnDestroy(): void {
     this.destroyed = true;
+    NESTED.delete(this.el.nativeElement);
     this.cleanup?.();
     this.cleanup = null;
   }
