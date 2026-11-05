@@ -1,0 +1,127 @@
+<app-header></app-header>
+
+@if (post(); as post) {
+  <!-- Article header -->
+  <section class="w-full bg-navy-pattern py-16 md:py-24">
+    <div class="w-full max-w-3xl mx-auto px-6">
+      <nav aria-label="Breadcrumb" class="text-sm text-ink-light mb-6 flex flex-wrap items-center gap-2">
+        <a routerLink="/home" class="hover:text-gold transition-colors">Home</a>
+        <span>/</span>
+        <a routerLink="/insights" class="hover:text-gold transition-colors">Insights</a>
+        <span>/</span>
+        <span class="text-gold">{{ post.category }}</span>
+      </nav>
+      <h1 class="text-white mb-6 leading-tight">{{ post.title }}</h1>
+      <div class="flex flex-wrap gap-6 text-sm text-ink-light">
+        <span class="flex items-center gap-2">
+          <lucide-angular [img]="icons.Calendar" class="w-4 h-4 text-gold"></lucide-angular>
+          {{ post.publishAt | date: 'd MMMM y' : 'UTC' }}
+        </span>
+        <span class="flex items-center gap-2">
+          <lucide-angular [img]="icons.Clock" class="w-4 h-4 text-gold"></lucide-angular>
+          {{ post.readMinutes }} min read
+        </span>
+      </div>
+    </div>
+  </section>
+
+  @if (isLive()) {
+    <!-- Article body -->
+    <article class="w-full py-16 md:py-20 bg-white">
+      <div class="w-full max-w-3xl mx-auto px-6 article-body">
+        <p class="text-lead text-navy! mb-10">{{ post.intro }}</p>
+
+        @for (section of post.sections; track section.heading) {
+          <h2 class="text-2xl font-bold text-navy mt-10 mb-4">{{ section.heading }}</h2>
+          @for (para of section.body; track $index) {
+            <p class="leading-relaxed mb-4">{{ para }}</p>
+          }
+          @if (section.table; as table) {
+            <div class="overflow-x-auto my-6 rounded-lg border border-line">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-navy text-white">
+                  <tr>
+                    @for (h of table.headers; track h) {
+                      <th class="p-3 font-semibold">{{ h }}</th>
+                    }
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (row of table.rows; track $index) {
+                    <tr class="border-t border-line align-top">
+                      @for (cell of row; track $index; let first = $first) {
+                        <td class="p-3" [class.font-semibold]="first" [class.text-navy]="first">{{ cell }}</td>
+                      }
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            @if (table.note) {
+              <p class="text-sm! italic">{{ table.note }}</p>
+            }
+          }
+        }
+
+        <!-- Service CTA -->
+        <div class="mt-14 rounded-xl bg-mist border border-line p-6 md:p-8">
+          <p class="text-navy! font-semibold text-lg! mb-4">{{ post.cta }}</p>
+          <div class="flex flex-wrap gap-3">
+            <a routerLink="/contact" class="btn-primary btn-shine inline-flex items-center gap-2">
+              Discuss your operational requirements
+              <lucide-angular [img]="icons.ArrowRight" class="w-4 h-4"></lucide-angular>
+            </a>
+            <a routerLink="/services" class="px-5 py-2 rounded-[5px] border border-navy text-navy font-semibold hover:border-gold hover:text-gold transition-colors">
+              OBA’s operations and outsourcing services
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+  } @else {
+    <!-- Scheduled: not yet published -->
+    <section class="w-full py-20 bg-white">
+      <div class="w-full max-w-2xl mx-auto px-6 text-center">
+        <p class="kicker mb-3">Coming soon</p>
+        <h2 class="text-navy mb-4">This article publishes on {{ post.publishAt | date: 'EEEE d MMMM' : 'UTC' }}</h2>
+        @if (countdown(); as c) {
+          <p class="text-lead mb-8">
+            {{ c.days }}d {{ c.hours }}h {{ c.minutes }}m {{ c.seconds }}s to go
+          </p>
+        }
+        <a routerLink="/insights" class="btn-primary btn-shine">Read the latest insights</a>
+      </div>
+    </section>
+  }
+
+  <!-- Related -->
+  @if (isLive() && related().length) {
+    <section class="w-full py-16 bg-mist">
+      <div class="w-full max-w-295 mx-auto px-6">
+        <p class="kicker mb-6">Related articles</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          @for (r of related(); track r.slug) {
+            <a [routerLink]="['/insights', r.slug]" class="card-hover bg-white p-6 flex flex-col">
+              <span class="text-gold text-xs font-bold tracking-wider uppercase mb-3">{{ r.category }}</span>
+              <h3 class="text-navy leading-snug mb-3">{{ r.title }}</h3>
+              <span class="mt-auto text-xs">{{ r.publishAt | date: 'd MMM y' : 'UTC' }}</span>
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+  }
+} @else {
+  <section class="w-full py-28 bg-white">
+    <div class="w-full max-w-2xl mx-auto px-6 text-center">
+      <h1 class="text-navy mb-4">Article not found</h1>
+      <p class="mb-8">The article you are looking for does not exist or has moved.</p>
+      <a routerLink="/insights" class="btn-primary btn-shine inline-flex items-center gap-2">
+        <lucide-angular [img]="icons.ArrowLeft" class="w-4 h-4"></lucide-angular>
+        Back to Insights
+      </a>
+    </div>
+  </section>
+}
+
+<app-footer></app-footer>

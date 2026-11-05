@@ -35,33 +35,40 @@ export class SeoRouterService {
       })
     ).subscribe((seo) => {
       if (!seo || (!seo['title'] && !seo['description'])) return;
-
-      this.title.setTitle(seo['title']);
-      this.meta.updateTag({ name: 'description', content: seo['description'] });
-
-      if (seo['keywords']) {
-        this.meta.updateTag({ name: 'keywords', content: seo['keywords'] });
-      }
-
-      if (seo['robots']) {
-        this.meta.updateTag({ name: 'robots', content: seo['robots'] });
-      } else {
-        this.meta.removeTag('name="robots"');
-      }
-
-      this.meta.updateTag({ property: 'og:title', content: seo['title'] });
-      this.meta.updateTag({ property: 'og:description', content: seo['description'] });
-
-      // Image handling: falls back to a sitewide default if a route doesn't set its own.
-      const image = seo['image'] || DEFAULT_OG_IMAGE;
-      this.meta.updateTag({ property: 'og:image', content: image });
-      this.meta.updateTag({ property: 'og:image:width', content: seo['imageWidth'] || '1200' });
-      this.meta.updateTag({ property: 'og:image:height', content: seo['imageHeight'] || '630' });
-      this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
-      this.meta.updateTag({ name: 'twitter:image', content: image });
-
-      this.manageJsonLd(seo['schema']);
+      this.apply(seo);
     });
+  }
+
+  /**
+   * Apply SEO tags directly. Used by pages whose metadata depends on the URL
+   * (e.g. an Insights article), which therefore leave route `data` empty.
+   */
+  apply(seo: Record<string, any>): void {
+    this.title.setTitle(seo['title']);
+    this.meta.updateTag({ name: 'description', content: seo['description'] });
+
+    if (seo['keywords']) {
+      this.meta.updateTag({ name: 'keywords', content: seo['keywords'] });
+    }
+
+    if (seo['robots']) {
+      this.meta.updateTag({ name: 'robots', content: seo['robots'] });
+    } else {
+      this.meta.removeTag('name="robots"');
+    }
+
+    this.meta.updateTag({ property: 'og:title', content: seo['title'] });
+    this.meta.updateTag({ property: 'og:description', content: seo['description'] });
+
+    // Image handling: falls back to a sitewide default if a route doesn't set its own.
+    const image = seo['image'] || DEFAULT_OG_IMAGE;
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:image:width', content: seo['imageWidth'] || '1200' });
+    this.meta.updateTag({ property: 'og:image:height', content: seo['imageHeight'] || '630' });
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
+    this.meta.updateTag({ name: 'twitter:image', content: image });
+
+    this.manageJsonLd(seo['schema']);
   }
 
   private manageJsonLd(schema: Record<string, any> | undefined): void {

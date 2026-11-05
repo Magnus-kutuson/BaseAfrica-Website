@@ -1,0 +1,32 @@
+# Rebuilds the site on Vercel each Tuesday and Thursday just after 10:00 GMT,
+# the Insights publishing slot (see src/app/data/insights.ts).
+#
+# Articles already appear to visitors on time via the in-app clock, but the
+# prerendered HTML that search engines read is fixed at build time. This rebuild
+# refreshes it so a newly released article is indexable straight away.
+#
+# Setup: create a Deploy Hook in Vercel (Project > Settings > Git > Deploy Hooks,
+# branch "main") and save its URL as the repository secret VERCEL_DEPLOY_HOOK_URL.
+
+name: Publish scheduled Insights
+
+on:
+  schedule:
+    # 10:05 UTC (= Ghana time) on Tuesdays and Thursdays. The 5-minute margin
+    # makes sure the build runs after the article's 10:00 release time.
+    - cron: '5 10 * * 2,4'
+  workflow_dispatch:
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        env:
+          DEPLOY_HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$DEPLOY_HOOK" ]; then
+            echo "::error::VERCEL_DEPLOY_HOOK_URL secret is not set."
+            exit 1
+          fi
+          curl --fail --silent --show-error -X POST "$DEPLOY_HOOK"

@@ -52,6 +52,21 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'insights',
+    loadComponent: () => import('./pages/insights/insights').then(m => m.Insights),
+    data: {
+      title: 'Open Base Africa Insights | BPO & Operations',
+      description: 'Practical insights on outsourcing, offshore teams and business operations in Ghana and Africa. Make better decisions about building and managing teams.',
+      keywords: 'outsourcing and business operations in Ghana, offshore operations Ghana, BPO Africa, offshore team management, back-office outsourcing'
+    }
+  },
+  {
+    // Metadata is set by the component from the article data.
+    path: 'insights/:slug',
+    loadComponent: () => import('./pages/insight-post/insight-post').then(m => m.InsightPost)
+  },
+  { path: 'blog', redirectTo: 'insights', pathMatch: 'full' },
+  {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then(m => m.Contact),
     data: {

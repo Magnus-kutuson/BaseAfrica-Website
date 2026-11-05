@@ -1,0 +1,159 @@
+<app-header></app-header>
+
+<!-- Hero -->
+<section class="w-full bg-navy-pattern py-20 md:py-28">
+  <div class="w-full max-w-295 mx-auto px-6 text-center">
+    <p class="kicker mb-4">Open Base Africa Insights</p>
+    <h1 class="text-white mb-4">Build smarter operations. Make better decisions about Africa.</h1>
+    <p class="text-ink-light text-lead max-w-2xl mx-auto">
+      Practical perspectives for business leaders considering outsourcing, building offshore teams or establishing
+      operations in Ghana. Explore clear guidance on operating models, workforce management, back-office delivery and
+      the decisions that shape reliable operations.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4 mt-8">
+      <a href="#articles" class="btn-primary btn-shine">Explore the insights</a>
+      <a routerLink="/contact" class="px-5 py-2 rounded-[5px] border border-white/40 text-white font-semibold hover:border-gold hover:text-gold transition-colors">
+        Talk to Open Base Africa
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Intro -->
+<section class="w-full py-16 md:py-20 bg-white">
+  <div class="w-full max-w-3xl mx-auto px-6 text-center reveal-on-scroll">
+    <p class="text-ink leading-relaxed">
+      Good operational decisions begin with a clear understanding of what the work requires and how it will be managed.
+      Open Base Africa Insights examines the practical questions behind outsourcing and offshore expansion, from
+      selecting an operating model to recruiting teams, setting up workplace infrastructure and maintaining delivery
+      standards.
+    </p>
+    <p class="text-ink leading-relaxed mt-4">
+      Our aim is to help business leaders assess opportunities, ask better questions and make informed decisions about
+      operating in Ghana and the wider African market.
+    </p>
+  </div>
+</section>
+
+<!-- Next article countdown -->
+@if (insights.next(); as next) {
+  <section class="w-full bg-mist py-12">
+    <div class="w-full max-w-295 mx-auto px-6">
+      <div class="next-card rounded-xl bg-white border border-line p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-6 justify-between">
+        <div class="max-w-xl">
+          <span class="inline-flex items-center gap-2 text-gold text-xs font-bold tracking-wider uppercase mb-2">
+            <span class="w-2 h-2 rounded-full bg-gold pulse-dot"></span>
+            Coming next
+          </span>
+          <h3 class="text-navy text-xl! leading-snug mb-2">{{ next.title }}</h3>
+          <p class="text-sm! flex items-center gap-2">
+            <lucide-angular [img]="icons.Calendar" class="w-4 h-4 text-gold shrink-0"></lucide-angular>
+            {{ next.publishAt | date: 'EEEE d MMMM y, HH:mm' : 'UTC' }} GMT
+          </p>
+        </div>
+        @if (nextCountdown(); as c) {
+          <div class="flex gap-3" aria-label="Time until the next article">
+            @for (unit of [
+              { v: c.days, l: 'Days' },
+              { v: c.hours, l: 'Hours' },
+              { v: c.minutes, l: 'Mins' },
+              { v: c.seconds, l: 'Secs' }
+            ]; track unit.l) {
+              <div class="countdown-unit">
+                <span class="countdown-value">{{ unit.v < 10 ? '0' + unit.v : unit.v }}</span>
+                <span class="countdown-label">{{ unit.l }}</span>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+}
+
+<!-- Articles -->
+<section id="articles" class="w-full py-16 md:py-24 bg-white scroll-mt-20">
+  <div class="w-full max-w-295 mx-auto px-6">
+    <div class="mb-10 reveal-on-scroll">
+      <p class="kicker mb-3">Latest articles</p>
+      <p class="text-ink max-w-3xl">
+        A new location does not create a successful operation on its own. The difference comes from the people,
+        processes, systems and management routines that turn a business plan into daily delivery.
+      </p>
+    </div>
+
+    @if (insights.published().length) {
+      <!-- Category filter -->
+      <div class="flex flex-wrap gap-2 mb-10" role="toolbar" aria-label="Filter by category">
+        <button type="button" class="chip" [class.chip-active]="!activeCategory()" (click)="selectCategory(null)">
+          All
+        </button>
+        @for (cat of liveCategories(); track cat.name) {
+          <button type="button" class="chip" [class.chip-active]="activeCategory() === cat.name" (click)="selectCategory(cat.name)" [title]="cat.description">
+            {{ cat.name }}
+          </button>
+        }
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        @for (post of visiblePosts(); track post.slug) {
+          <a [routerLink]="['/insights', post.slug]" class="post-card card-hover bg-white p-6 flex flex-col">
+            <span class="text-gold text-xs font-bold tracking-wider uppercase mb-3">{{ post.category }}</span>
+            <h3 class="text-navy leading-snug mb-3">{{ post.title }}</h3>
+            <p class="text-sm! leading-relaxed line-clamp-3 mb-6">{{ post.metaDescription }}</p>
+            <div class="mt-auto flex items-center justify-between text-xs text-ink">
+              <span class="flex items-center gap-1.5">
+                <lucide-angular [img]="icons.Calendar" class="w-3.5 h-3.5 text-gold"></lucide-angular>
+                {{ post.publishAt | date: 'd MMM y' : 'UTC' }}
+              </span>
+              <span class="flex items-center gap-1.5">
+                <lucide-angular [img]="icons.Clock" class="w-3.5 h-3.5 text-gold"></lucide-angular>
+                {{ post.readMinutes }} min read
+              </span>
+            </div>
+          </a>
+        }
+      </div>
+    } @else {
+      <div class="rounded-xl border border-dashed border-line p-10 text-center">
+        <h3 class="text-navy mb-2">Our first articles are on the way</h3>
+        <p class="max-w-xl mx-auto">
+          New insights are published every Tuesday and Thursday. Check back soon, or follow Open Base Africa on LinkedIn
+          to see each article as it goes live.
+        </p>
+      </div>
+    }
+  </div>
+</section>
+
+<!-- Topic areas -->
+<section class="w-full py-16 md:py-24 bg-mist">
+  <div class="w-full max-w-295 mx-auto px-6">
+    <p class="kicker mb-3 reveal-on-scroll">Topic areas</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+      @for (cat of categories; track cat.name; let i = $index) {
+        <div class="bg-white rounded-xl border border-line p-6" reveal-on-scroll [revealIndex]="i">
+          <h3 class="text-navy mb-2">{{ cat.name }}</h3>
+          <p class="text-sm!">{{ cat.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section class="w-full bg-navy-pattern py-16 md:py-20">
+  <div class="w-full max-w-3xl mx-auto px-6 text-center reveal-on-scroll">
+    <h2 class="text-white mb-4">Considering an offshore team or a new operating base in Ghana?</h2>
+    <p class="text-ink-light mb-8">
+      Start with the business outcome you need, the work that must be delivered and the level of local management
+      required. Open Base Africa can discuss an operating model built around your requirements.
+    </p>
+    <a routerLink="/contact" class="btn-primary btn-shine inline-flex items-center gap-2">
+      Discuss your operations with OBA
+      <lucide-angular [img]="icons.ArrowRight" class="w-4 h-4"></lucide-angular>
+    </a>
+  </div>
+</section>
+
+<app-footer></app-footer>

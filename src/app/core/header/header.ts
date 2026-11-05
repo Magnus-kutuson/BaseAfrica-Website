@@ -23,6 +23,7 @@ export class Header implements OnInit, AfterViewInit, OnDestroy {
     { label: 'Home', url: '/home' },
     { label: 'Services', url: '/services' },
     { label: 'Projects', url: '/projects' },
+    { label: 'Insights', url: '/insights' },
     { label: 'About', url: '/about' },
     { label: 'Contact', url: '/contact' },
   ];

@@ -23,7 +23,8 @@ export class Footer {
       links: [
         { label: 'Home', url: '/home' },
         { label: 'Services', url: '/services' },
-        { label: 'Projects', url: '/projects' }
+        { label: 'Projects', url: '/projects' },
+        { label: 'Insights', url: '/insights' }
       ]
     },
     {
