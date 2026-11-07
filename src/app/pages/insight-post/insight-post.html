@@ -31,10 +31,16 @@
       <div class="w-full max-w-3xl mx-auto px-6 article-body">
         <p class="text-lead text-navy! mb-10">{{ post.intro }}</p>
 
-        @for (section of post.sections; track section.heading) {
-          <h2 class="text-2xl font-bold text-navy mt-10 mb-4">{{ section.heading }}</h2>
+        @for (section of post.sections; track $index) {
+          @if (section.heading) {
+            <h2 class="text-2xl font-bold text-navy mt-10 mb-4">{{ section.heading }}</h2>
+          }
           @for (para of section.body; track $index) {
-            <p class="leading-relaxed mb-4">{{ para }}</p>
+            @if (typeof para === 'string') {
+              <p class="leading-relaxed mb-4">{{ para }}</p>
+            } @else {
+              <p class="leading-relaxed mb-4"><strong class="text-navy">{{ para.lead }}</strong> {{ para.text }}</p>
+            }
           }
           @if (section.table; as table) {
             <div class="overflow-x-auto my-6 rounded-lg border border-line">

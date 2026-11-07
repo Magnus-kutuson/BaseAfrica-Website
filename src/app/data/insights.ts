@@ -20,9 +20,13 @@ export type InsightCategory =
   | 'Back-Office and Customer Operations'
   | 'Operational Strategy and Growth';
 
+/** A plain paragraph, or one that opens with a bold run-in label. */
+export type InsightParagraph = string | { lead: string; text: string };
+
 export interface InsightSection {
-  heading: string;
-  body: string[];
+  /** Omit for paragraphs that sit between the intro and the first heading. */
+  heading?: string;
+  body: InsightParagraph[];
   table?: { headers: string[]; rows: string[][]; note?: string };
 }
 
@@ -88,50 +92,156 @@ export const INSIGHTS: Insight[] = [
     week: 1,
     primaryKeyword: 'outsourcing to Ghana',
     keywords: ['offshore operations in Ghana', 'Ghana BPO', 'business operations in Ghana', 'outsourcing in Africa'],
-    readMinutes: 9,
+    readMinutes: 10,
     intro:
       'Choosing an offshore location is not a decision about labour cost alone. It is a decision about where work can be delivered to the required standard, with the right management structure, capacity and visibility. For companies assessing Africa, Ghana deserves a careful evaluation based on the work they need done and the operating model they are prepared to support.',
     sections: [
       {
-        heading: 'The right question is not "Which country is cheapest?"',
         body: [
-          'The real decision is about capability, control, service quality, continuity and total operating cost. Headline wage comparisons leave most of those questions unanswered.',
+          'The question that matters is not which country is cheapest. It is whether a location can deliver the capability, control, service quality, continuity and total operating cost the business needs. Outsourcing to Ghana is worth testing against those criteria rather than against a wage table.',
+          'Ghana’s BPO sector is smaller than several of its African peers, but it has attributes that make it a credible option for specific operating needs. Those attributes only hold when buyers assess them honestly rather than treating them as guarantees.',
         ],
       },
       {
-        heading: 'Where Ghana may fit an international operating model',
+        heading: 'The Right Question Is Not "Which Country Is Cheapest?"',
         body: [
-          'Ghana may suit English-language back-office processes, customer operations, research, administrative support and other clearly defined workflows. Fit should always be tested against the specific roles a business needs.',
+          'Headline wage comparisons are a poor basis for an offshore decision. A low hourly rate is irrelevant if the work requires skills the location cannot supply at volume. It is equally irrelevant if management oversight is thin, infrastructure interruptions erode service levels, or the total cost of recruiting, training, supervising, securing and retaining a team exceeds the saving on payroll.',
+          'For companies comparing Ghana with other locations, the useful frame is fit. What work needs to be delivered? What level of English, domain knowledge, system access and judgement does it require? What hours must be covered? What management structure will the buyer provide, and what should the provider own?',
+          'These questions do more work than a country ranking. They also expose the assumptions a provider should be able to defend in a proposal.',
+          'Ghana’s BPO and global business services sector was estimated at roughly $243 million in 2025, compared with $310 million in Kenya and $462 million in Egypt. The figures come from Statista data as reported by Ecofin Agency and Africa Business Insight, both of which published the comparison in August 2026.',
+          'Ghana BPO market-size figures should be treated with appropriate caution. Statista’s definition covers business process outsourcing, while other analysts count global business services more broadly, so the numbers are useful for scale rather than for precise comparison. Ghana is an emerging market, not a mature outsourcing hub, and that emerging status cuts both ways.',
+          'It means less competition for talent and potentially attractive entry economics. It also means the buyer may need to invest more in management, training and infrastructure resilience than a larger, more established market would require.',
         ],
       },
       {
-        heading: 'Time-zone alignment can support collaboration, but it does not solve management',
+        heading: 'Where Ghana May Fit an International Operating Model',
         body: [
-          'GMT is a useful planning consideration for UK and European teams, and US coverage needs to be mapped carefully. Overlap hours help, but they do not replace clear ownership of daily work.',
+          'Ghana’s most defensible proposition is English-language work that benefits from a young, educated workforce and a time zone that overlaps with Europe and the US East Coast.',
+          'The country produces more than 100,000 higher-education graduates each year. Ataraxis’s Global Outsourcing Talent Index 2026 gives Ghana an English proficiency score of 90 out of 100, matching Nigeria and Kenya. English is the official language and the medium of instruction from primary school through university.',
+          'Approximately 73% of the population is under 35, which creates a demographic pipeline that supports entry-level and early-career roles at scale. These attributes make Ghana a potential fit for English-language back-office processing, customer support, research and administrative support.',
+          'They are worth testing directly in any outsourcing to Ghana business case rather than accepted from a country profile. International operators including Concentrix, TP and AmaliTech have established centres in Accra, which provides some evidence that the talent market can support formal BPO delivery at commercial scale.',
+          'Sector-specific talent depth beyond these general capabilities should be tested rather than assumed. Claims about specialist financial services talent, legal process support, healthcare administration or technical helpdesk depth need validation before they appear in a buyer’s business case. A large graduate pool does not automatically mean a given specialism is available at the volume, seniority or quality the work demands.',
+          'The operating model matters too. Ghana’s domestic BPO providers have historically focused on customer service and back-office operations. The Business Outsourcing Services Association Ghana (BOSAG) is coordinating efforts to move the sector toward higher-value services including knowledge process outsourcing, cloud and AI-adjacent work.',
+          'Buyers whose requirements sit at the simpler end of the back-office spectrum will find a better-established supply base. Those seeking complex, regulated or highly specialised work should expect a longer validation process.',
         ],
       },
       {
-        heading: 'The operating conditions buyers should assess',
+        heading: 'Time-Zone Alignment Can Support Collaboration, but It Does Not Solve Management',
         body: [
-          'Assess the recruitment pipeline, workplace, connectivity, power resilience, data handling, transport, local leadership and continuity. None of these should be assumed to be solved by default.',
+          'Ghana operates on Greenwich Mean Time (UTC+0) year-round, with no daylight saving adjustment. For UK and European buyers this is a genuinely useful planning property. During the UK winter, Ghana is on the same clock as London. During British Summer Time, Ghana is one hour behind.',
+          'Meetings, handovers and same-day issue resolution are straightforward to schedule. For US buyers the picture is more nuanced.',
+          'Ghana is typically four to five hours ahead of US Eastern Time, depending on whether the US is observing daylight saving. A Ghana-based team working a standard 09:00 to 17:00 local day overlaps with the US East Coast morning but not its afternoon.',
+          'Buyers that need full US business-hours coverage will need to plan shifts, stagger start times or accept asynchronous handoffs. The overlap should be mapped against the actual coverage requirement rather than assumed from a headline time-zone advantage.',
+          'More importantly, time-zone alignment does not substitute for management. A shared clock makes collaboration easier, but it does not make a team self-directing. The buyer still needs a clear operating model: who owns recruitment, who sets priorities, who supervises quality, who handles escalations, and how performance is reported.',
+          'Ghana’s time zone removes one category of friction. It does not remove the need for local operating management.',
         ],
       },
       {
-        heading: 'Why local operating management matters',
+        heading: 'The Operating Conditions Buyers Should Assess',
         body: [
-          'Recruitment, onboarding, SOPs, training, supervision, quality assurance and reporting only become a working operation when someone locally connects them and owns the result.',
+          'A credible assessment of offshore operations in Ghana separates what is improving from what remains constrained. The following conditions should be tested through site visits, provider due diligence and reference checks rather than accepted from marketing material.',
+          {
+            lead: 'Recruitment pipeline.',
+            text: 'Ghana’s graduate output and youth demographic are genuine strengths. Recruitment at scale still requires active sourcing, screening and onboarding capability. The buyer should ask how the provider builds a pipeline for the specific role profile, what attrition assumptions it uses, and how it backfills at short notice.',
+          },
+          {
+            lead: 'Infrastructure and connectivity.',
+            text: 'Internet penetration surpassed 70% in 2024, and international connectivity benefits from subsea fibre including the 2Africa cable. The sector also faces persistent fibre cuts and grid instability. Industry projections put nationwide fibre cuts in 2026 at 8,578, with repair costs averaging roughly $2,045 per cut, and the sector spent more than $20 million on fibre repairs in 2025. The Internet Society’s Internet Resilience Index, published in March 2024, gives Ghana a score of 44%, indicating a medium capacity to withstand unexpected failures.',
+          },
+          {
+            lead: 'Power resilience.',
+            text: 'Grid instability has driven increases in daily cell-site outages during incident periods. The national grid experienced two nationwide outages in 2026, both traced to transmission faults. A serious BPO operation in Ghana should therefore be assessed on its backup power arrangements, redundancy and incident history, not on the assumption that power is a solved problem.',
+          },
+          {
+            lead: 'Workplace and data handling.',
+            text: 'Access-controlled delivery centres, physical security and data protection controls are not optional for work involving customer data, financial information or regulated processes. Ghana’s Data Protection Act, 2012 (Act 843) provides a framework, and providers may align to SOC 2 or equivalent standards. The buyer should verify the specific controls in place rather than relying on a logo.',
+          },
+          {
+            lead: 'Transport and continuity.',
+            text: 'Commuting, local transport and business-continuity planning affect attendance, shift reliability and the provider’s ability to maintain service during disruptions. These are practical questions for anyone running business operations in Ghana, not abstract risks.',
+          },
+          {
+            lead: 'Local leadership.',
+            text: 'The presence of capable local operations managers, team leaders and quality assurance staff is often the difference between a functioning offshore team and a staffing contract that the buyer ends up managing from a distance.',
+          },
         ],
       },
       {
-        heading: 'When Ghana may not be the right fit',
+        heading: 'Why Local Operating Management Matters',
         body: [
-          'Specialist language requirements, licensing, highly regulated work or skills that cannot be sourced at the required level may point elsewhere. A feasibility assessment is the sensible first step.',
+          'Offshore operations fail more often because of weak management than because of an unsuitable location. Recruitment, onboarding, standard operating procedures, training, supervision, quality assurance and reporting do not run themselves. They do not become easier because the team is offshore.',
+          'A provider with a genuine build-and-run model recruits, trains and manages the team, puts systems and security controls in place, and delivers against agreed performance standards. That model transfers the operational burden of day-to-day management to a party with local presence. It also gives the buyer visibility through reporting and governance routines.',
+          'The alternative is a staffing arrangement in which the buyer hires individuals through an intermediary but retains all management responsibility. That model can work for highly self-directed specialist roles. It is a poor fit for volume customer operations, back-office processing or any workflow that depends on consistent supervision, quality control and shift coverage.',
+          'Buyers should be explicit about which model they are buying and who owns each management function.',
         ],
       },
       {
-        heading: 'A practical shortlist checklist',
+        heading: 'When Ghana May Not Be the Right Fit',
         body: [
-          'Before shortlisting, be clear on work scope, skills, hours, service levels, systems, data access, budget, management ownership and exit planning.',
+          'Ghana is not a universal answer. Several conditions should trigger a more cautious assessment or a different location choice.',
+          {
+            lead: 'Specialist language requirements.',
+            text: 'Ghana’s English proficiency is strong. Operations requiring fluent French, Portuguese, German or other specialist language coverage at volume are not well served by the general workforce. Ghana is developing French and Portuguese language capabilities for African markets, but these remain nascent rather than established at scale.',
+          },
+          {
+            lead: 'Licensing and regulated work.',
+            text: 'Work that requires local professional licensing, regulated financial advice, legal practice or healthcare delivery should be assessed against Ghana’s regulatory framework and the buyer’s own compliance obligations. The Bank of Ghana’s Outsourcing Directive, introduced in 2024 and effective from 1 July 2025, tightened outsourcing rules for regulated financial institutions. That reflects the heightened scrutiny applied to material outsourcing in the financial sector.',
+          },
+          {
+            lead: 'Highly specialised skills.',
+            text: 'If the work requires deep technical specialisms, scarce engineering disciplines or sector-specific expertise that cannot be sourced at the required level, Ghana’s general talent depth will not compensate. The feasibility assessment should test actual availability against the role specification, not the national graduate headline.',
+          },
+          {
+            lead: 'Security-sensitive work.',
+            text: 'Buyers with high security classifications, sensitive government work or threat models that demand mature, audited security infrastructure should validate the provider’s controls in detail. They should also consider whether the location’s broader infrastructure resilience meets their continuity requirements.',
+          },
+          'In each of these cases, the right response is a structured feasibility assessment rather than a blanket rejection or acceptance of Ghana. The assessment should test work scope, skills, hours, service levels, systems, data access, budget, management ownership and exit planning against what the location and provider can actually deliver.',
+        ],
+      },
+      {
+        heading: 'A Practical Shortlist Checklist',
+        body: [
+          'For buyers comparing Ghana with other locations, the following questions help separate a credible operating plan from a hopeful one.',
+          {
+            lead: 'Work scope.',
+            text: 'What exactly will the Ghana-based team do, and what decisions or exceptions will remain with the buyer? Which tasks are rule-based, which require judgement, and which require specialist knowledge?',
+          },
+          {
+            lead: 'Skills and language.',
+            text: 'What level of English, domain knowledge and system proficiency does the work require? Can the provider demonstrate that it has recruited and retained people at that level, not just graduates in general?',
+          },
+          {
+            lead: 'Hours and coverage.',
+            text: 'What hours must be covered in the buyer’s time zone, and how will shifts be structured? What is the realistic overlap window, and what happens outside it?',
+          },
+          {
+            lead: 'Service levels and quality.',
+            text: 'What service levels will apply, how will quality be measured, and what governance routines will review performance? Who owns quality assurance, and what happens when performance misses the target?',
+          },
+          {
+            lead: 'Systems and data access.',
+            text: 'How will the team access the buyer’s systems? What data will be visible in Ghana, how is it protected, and what controls exist for access management, logging and incident response?',
+          },
+          {
+            lead: 'Management ownership.',
+            text: 'Which management functions does the provider own, and which remain with the buyer? Who employs the team, who supervises it day to day, and who is accountable for attrition and performance?',
+          },
+          {
+            lead: 'Budget and total cost.',
+            text: 'What is the fully loaded cost of the operation, including recruitment, training, management, infrastructure resilience, security and governance, not just the agent rate? How does that compare with the buyer’s current cost and risk profile?',
+          },
+          {
+            lead: 'Exit planning.',
+            text: 'What happens if the relationship ends or the provider fails? How are knowledge transfer, data return, team transition and continuity handled?',
+          },
+        ],
+      },
+      {
+        heading: 'Closing: A Location Decision, Not a Cost Decision',
+        body: [
+          'Outsourcing to Ghana can be a credible option for specific operating needs when location fit, workforce requirements, infrastructure, management and controls are evaluated together. The country offers a young, English-speaking workforce, a time zone that simplifies European collaboration, a growing graduate pipeline and a cost base that remains competitive.',
+          'It also has real infrastructure constraints, an emerging rather than mature BPO market, and management requirements that cannot be assumed away.',
+          'The right approach is not to treat Ghana as either a hidden gem or an inherently risky frontier. It is to assess it against the work the business needs done and the operating model the buyer is prepared to support. For companies weighing outsourcing in Africa more broadly, Ghana belongs on the shortlist when the requirement is English-language delivery, European time-zone overlap and a build-and-run partner based in Accra.',
         ],
       },
     ],
