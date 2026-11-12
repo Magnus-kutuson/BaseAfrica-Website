@@ -292,50 +292,251 @@ export const INSIGHTS: Insight[] = [
     week: 1,
     primaryKeyword: 'Ghana vs Philippines outsourcing',
     keywords: ['outsourcing to Ghana', 'Philippines outsourcing', 'offshore location comparison', 'BPO in Africa'],
-    readMinutes: 9,
+    readMinutes: 11,
     intro:
       'A country comparison is useful only when it helps a business choose where its work can be delivered reliably. Ghana and the Philippines should not be compared through broad claims about which workforce is better or which country is cheaper. They should be compared against the actual roles, hours, service levels and operating controls the business requires.',
     sections: [
       {
-        heading: 'Start with the work, not the country label',
         body: [
-          'Define processes, language requirements, complexity, systems, customer expectations, volumes and coverage hours before comparing locations.',
+          'The Philippines is one of the most established offshore destinations in the world. It has decades of experience in customer operations and back-office delivery, a deep pool of people who have already worked in the industry, and a mature ecosystem of providers, facilities and supporting services. For many buyers it is the default reference point.',
+          'Ghana is an emerging option. Its BPO sector is smaller and younger, but it offers an English-speaking workforce, a growing graduate pipeline and a time zone that sits alongside the UK and Europe. For some operations, those attributes matter more than scale. For others, they do not.',
+          'Neither description settles the decision. The useful question is which location can deliver a specific set of work, to a specific standard, under a management model the buyer is prepared to support. This guide sets out a framework for answering that question for Ghana vs Philippines outsourcing, without assuming a winner in advance.',
         ],
       },
       {
-        heading: 'Compare talent availability for the specific roles',
+        heading: 'Start With the Work, Not the Country Label',
         body: [
-          'Look at relevant experience, language needs, technical skills, hiring speed and management capacity for the roles you actually need, rather than national generalisations.',
+          'Location comparisons often begin with reputation. One country is described as the safe choice and the other as the emerging alternative. That framing is understandable, but it skips the step that determines the outcome: defining the work.',
+          'Before comparing locations, a buyer should be able to describe the operation on a single page. That description does not need to be elaborate, but it should be specific enough that two providers in two countries could price and plan against it in the same way.',
+          {
+            lead: 'Processes and complexity.',
+            text: 'Which processes will the team run, and how much judgement do they require? Rule-based data handling, first-line customer support, account management and specialist research make very different demands on recruitment, training and supervision.',
+          },
+          {
+            lead: 'Language requirements.',
+            text: 'Which languages are needed, at what level, and in which channels? Written email support, live voice and regulated customer conversations each set a different bar for fluency, clarity and familiarity with the end customer.',
+          },
+          {
+            lead: 'Systems and data.',
+            text: 'Which systems will the team use, what data will it see, and what access controls will the buyer require? These requirements shape the workplace, security and compliance work in either location.',
+          },
+          {
+            lead: 'Customer expectations and volumes.',
+            text: 'Who is the end customer, what do they expect, and how much work will arrive, and when? Volume patterns drive staffing models and therefore cost.',
+          },
+          {
+            lead: 'Coverage hours.',
+            text: 'Which hours must be covered in the buyer’s own time zone, and which can be handled asynchronously? This single requirement often does more to separate Ghana and the Philippines than any other factor.',
+          },
+          'With that specification in place, the comparison becomes concrete. Without it, buyers tend to compare brochures.',
         ],
       },
       {
-        heading: 'Compare time-zone coverage and collaboration',
+        heading: 'Compare Talent Availability for the Specific Roles',
         body: [
-          'UK, European and US buyers face different coverage questions. A role-by-role coverage matrix is more useful than declaring one destination better overall.',
+          'Both countries have large, young, English-speaking populations. English is an official language in Ghana and in the Philippines, and both have education systems that produce graduates in large numbers. At the level of national headlines, the talent question can look evenly balanced. It rarely is once the roles are defined.',
+          'The Philippines’ main talent advantage is industry experience. Because the sector has operated at scale for a long time, many candidates have already worked in contact centres or shared services. They are familiar with metrics, shift work, quality monitoring and client-facing processes. Experienced team leaders, quality analysts, workforce planners and operations managers are also easier to find, which matters as much as frontline hiring.',
+          'Ghana’s advantage is different. The talent market is less saturated, so a provider may face less competition for strong candidates in some roles. English is the language of business and education, and the workforce is a potential fit for English-language back-office, research and administrative work. The trade-off is that more candidates will be new to the industry. Training, nesting and supervision need to be planned accordingly, and experienced middle managers may be scarcer.',
+          'The right way to compare is role by role, using evidence rather than national averages. For each critical role, ask the following.',
+          {
+            lead: 'Relevant experience.',
+            text: 'How many candidates with comparable experience can the provider realistically reach, and how does it know?',
+          },
+          {
+            lead: 'Language and communication.',
+            text: 'What assessment will be used for written and spoken English, and what standard does the role actually require?',
+          },
+          {
+            lead: 'Technical and domain skills.',
+            text: 'Does the role need sector knowledge, software proficiency or numeracy that the general graduate pool cannot supply without additional training?',
+          },
+          {
+            lead: 'Hiring speed.',
+            text: 'How long would it take to recruit the first cohort, and how quickly could the provider backfill if someone leaves?',
+          },
+          {
+            lead: 'Management capacity.',
+            text: 'Who will lead the team, and has that person run a comparable operation before?',
+          },
+          'Any statistics used in the business case, such as graduate numbers, proficiency scores or attrition rates, should come from current, named sources and be checked against the provider’s own recruitment data. A short recruitment test for the specific role is often more informative than a national ranking.',
         ],
       },
       {
-        heading: 'Compare infrastructure and operating resilience',
+        heading: 'Compare Time-Zone Coverage and Collaboration',
         body: [
-          'Assess facilities, connectivity, power backup, secure access, business continuity and vendor dependencies, using confirmed local facts.',
+          'Time zones are where Ghana and the Philippines differ most clearly. Ghana operates on Greenwich Mean Time all year, with no daylight saving. The Philippines operates on Philippine Standard Time, eight hours ahead of GMT, also without daylight saving. The practical effect depends on where the buyer is based and which hours need to be covered.',
+          'For UK and European buyers, Ghana shares or nearly shares the working day. During the UK winter, Accra and London are on the same clock, and during British Summer Time Ghana is one hour behind. A Ghana-based team can work the buyer’s hours on a normal day shift. In the Philippines, the UK working day falls in the late afternoon and evening, so covering it requires an afternoon or evening shift.',
+          'For US buyers, the picture changes. A US Eastern business day falls in the Ghanaian afternoon and evening, which allows partial overlap on a normal day shift and full coverage with a later shift. In the Philippines, the US business day falls overnight. The Philippine industry is very familiar with night-shift operation for US clients, and that experience is a genuine strength, but night work still has implications for staffing, wellbeing, transport and supervision that should be planned.',
+          'For buyers who need follow-the-sun or 24/7 coverage, the two locations can be complementary rather than competing. A combination of sites can cover more of the clock on day and evening shifts than either can alone.',
+          'Rather than declaring one location better, map each role against the hours it must cover. The illustrative matrix below shows how a standard 09:00 to 17:00 buyer day translates into local time in each country in January.',
+        ],
+        table: {
+          headers: ['Buyer location and hours', 'Local time in Accra', 'Local time in Manila', 'Planning implication'],
+          rows: [
+            [
+              'London, 09:00 to 17:00',
+              '09:00 to 17:00',
+              '17:00 to 01:00',
+              'Ghana can cover on a day shift. The Philippines needs an evening shift.',
+            ],
+            [
+              'New York, 09:00 to 17:00',
+              '14:00 to 22:00',
+              '22:00 to 06:00',
+              'Ghana needs a late shift for full coverage. The Philippines needs a night shift.',
+            ],
+            [
+              'Los Angeles, 09:00 to 17:00',
+              '17:00 to 01:00',
+              '01:00 to 09:00',
+              'Both need out-of-hours shifts. The Philippines can work an early-morning pattern.',
+            ],
+            [
+              'Sydney, 09:00 to 17:00',
+              '22:00 to 06:00',
+              '06:00 to 14:00',
+              'The Philippines can cover on an early day shift. Ghana needs a night shift.',
+            ],
+          ],
+          note: 'Times shown for January. When the UK, US or Australia change their clocks, the overlap shifts by one hour. Neither Ghana nor the Philippines observes daylight saving.',
+        },
+      },
+      {
+        heading: 'Compare Infrastructure and Operating Resilience',
+        body: [
+          'Infrastructure comparisons are prone to stereotypes in both directions. A credible assessment looks at the specific facility, its suppliers and its incident history rather than at national impressions.',
+          'The Philippines benefits from a long-established ecosystem of purpose-built delivery centres, many in dedicated business districts and economic zones, with landlords and service providers that understand the needs of outsourcing operations. Its main continuity considerations include exposure to typhoons, flooding and earthquakes, and commuting conditions in major cities, which can affect attendance and shift reliability.',
+          'Ghana’s international connectivity has improved with additional subsea fibre capacity, and Accra has modern office stock suitable for delivery centres. Its main continuity considerations are fibre cuts and grid instability, which make backup power, redundant connectivity and tested failover arrangements essential rather than optional.',
+          'In both countries, the questions for the buyer are the same.',
+          {
+            lead: 'Facilities.',
+            text: 'Is the delivery centre access-controlled, appropriately secured and designed for the work, including any clean-desk or restricted-area requirements?',
+          },
+          {
+            lead: 'Connectivity.',
+            text: 'How many independent internet links serve the site, from which providers and over which routes? How quickly does traffic fail over, and when was that last tested?',
+          },
+          {
+            lead: 'Power.',
+            text: 'What backup power is in place, how long can it sustain full operations, and how is fuel or battery capacity managed during a prolonged outage?',
+          },
+          {
+            lead: 'Secure access.',
+            text: 'How do staff connect to the buyer’s systems, and what controls apply to devices, authentication and remote work?',
+          },
+          {
+            lead: 'Business continuity.',
+            text: 'What happens if the site becomes unavailable because of weather, civil disruption or a utility failure? Is there an alternative site or a tested work-from-home arrangement, and does it meet the buyer’s security requirements?',
+          },
+          {
+            lead: 'Vendor dependencies.',
+            text: 'Which third parties does the operation rely on, and what happens if one of them fails?',
+          },
+          'Data protection deserves its own check. Ghana’s Data Protection Act, 2012 (Act 843) and the Philippines’ Data Privacy Act of 2012 each set out obligations for handling personal data, and the buyer will have obligations of its own in its home market. Specialist advice should confirm how those requirements apply to the specific work.',
+          'Local facts should be confirmed during due diligence, ideally through a site visit and the provider’s own incident records. Both locations can support resilient operations. Neither does so automatically.',
         ],
       },
       {
-        heading: 'Compare the management model',
+        heading: 'Compare the Management Model',
         body: [
-          'Decide whether you will self-manage staff, use a managed service, establish a captive operation or combine these in a hybrid model.',
+          'A location comparison is incomplete without a decision about who will run the operation. The same country can produce very different results depending on whether the buyer self-manages, appoints a managed service provider, establishes its own captive centre or combines these approaches.',
+          {
+            lead: 'Self-managed staff.',
+            text: 'The buyer hires individuals through an intermediary or employer-of-record arrangement and manages them directly. This can work for a small number of experienced, self-directed specialists. It places the full burden of supervision, quality and continuity on the buyer, from a distance.',
+          },
+          {
+            lead: 'Managed service.',
+            text: 'A provider recruits, trains, supervises and reports on the team against agreed service levels. Control is exercised through scope, governance and reporting rather than direct line management. This model depends heavily on the quality of the provider’s local leadership.',
+          },
+          {
+            lead: 'Captive operation.',
+            text: 'The buyer establishes its own entity and centre in the chosen country. This offers the most direct control but requires the most setup effort, local legal and tax advice, and an internal leadership team on the ground.',
+          },
+          {
+            lead: 'Hybrid model.',
+            text: 'The buyer retains some functions, such as process ownership, quality standards or specialist roles, while a local partner provides recruitment, facilities, supervision and day-to-day operations.',
+          },
+          'The maturity of the Philippine market means buyers can choose from a wide range of established providers and experienced managers across all of these models. In Ghana, the provider market is smaller, so the quality of an individual partner’s local management, systems and reporting matters even more. In both cases, buyers should be explicit about who employs the team, who supervises it day to day, who owns quality and who is accountable when performance falls short.',
+          'Legal structures, employment arrangements and tax exposure differ between the two countries. Those questions require qualified local advice before a model is chosen.',
         ],
       },
       {
-        heading: 'Compare total cost, not salary alone',
+        heading: 'Compare Total Cost, Not Salary Alone',
         body: [
-          'Include statutory employment costs, workspace, equipment, technology, recruitment, training, supervision, attrition, QA and management overhead, using quotes specific to your requirements.',
+          'Salary comparisons are the most common way to compare offshore locations and the least reliable. Published salary figures vary by source, role definition, seniority and date, and they leave out most of the cost of running an operation. Two quotes with similar agent rates can produce very different totals once everything else is included.',
+          'A like-for-like comparison should include each of the following, priced against the same role specification and service levels.',
+          {
+            lead: 'Compensation and statutory costs.',
+            text: 'Base pay, allowances, statutory employer contributions, leave and any night-shift or holiday premiums required by the coverage pattern.',
+          },
+          {
+            lead: 'Workplace and equipment.',
+            text: 'Seats, utilities, furniture, devices, headsets and maintenance, including backup power and redundant connectivity.',
+          },
+          {
+            lead: 'Technology.',
+            text: 'Software licences, telephony, security tooling and IT support, and who pays for each.',
+          },
+          {
+            lead: 'Recruitment and training.',
+            text: 'Sourcing, assessment, onboarding, initial training and refresher training, including the cost of the time before new starters reach full productivity.',
+          },
+          {
+            lead: 'Supervision and quality.',
+            text: 'Team leaders, quality analysts, workforce planners and operations management, and the ratios used to staff them.',
+          },
+          {
+            lead: 'Attrition.',
+            text: 'The cost of replacing people who leave, including recruitment, training and lost productivity.',
+          },
+          {
+            lead: 'Management overhead and governance.',
+            text: 'Account management, reporting, service reviews and the time the buyer’s own team will spend overseeing the operation.',
+          },
+          'Comparing the totals also means comparing the assumptions behind them. A lower quote may assume fewer supervisors, less training, or that the buyer will absorb certain costs directly. Ask each provider for a quote built from the same inputs and for a clear list of what is included, excluded and passed through at cost.',
         ],
       },
       {
-        heading: 'Use a weighted scorecard to decide',
+        heading: 'Use a Weighted Scorecard to Decide',
         body: [
-          'Score each location against criteria and weightings that reflect your priorities. There is no universal winner, only a better fit for a defined operation.',
+          'Once the work is defined and the evidence gathered, a weighted scorecard helps turn a complex comparison into a decision that can be explained and challenged. The framework below is a starting point. The criteria should be adapted to the operation, and the weightings should reflect the buyer’s priorities rather than a generic view of what matters.',
+          'Score each location, or each provider within a location, from 1 to 5 against each criterion, multiply by the weighting and add the results. The illustrative weightings below total 100. A buyer that serves US customers overnight might weight coverage more heavily, while a buyer handling sensitive data might give security and continuity more weight.',
+        ],
+        table: {
+          headers: ['Criterion', 'What to assess', 'Illustrative weighting'],
+          rows: [
+            [
+              'Talent fit',
+              'Availability of candidates with the required experience, language level and skills for each role',
+              '25',
+            ],
+            ['Coverage fit', 'How well normal and extended shifts map to the hours the work must be covered', '15'],
+            [
+              'Management capability',
+              'Strength of local leadership, supervision, quality assurance and reporting',
+              '20',
+            ],
+            [
+              'Infrastructure and continuity',
+              'Facility security, connectivity, power resilience and tested continuity plans',
+              '15',
+            ],
+            [
+              'Security and compliance',
+              'Data protection controls, access management and fit with the buyer’s regulatory obligations',
+              '10',
+            ],
+            ['Total cost', 'Fully loaded cost from comparable quotes, including management and transition', '15'],
+          ],
+          note: 'Weightings are illustrative only. Adapt the criteria and weightings to your operation, and score against evidence gathered during due diligence rather than reputation.',
+        },
+      },
+      {
+        heading: 'Closing: Compare Requirements, Not Reputations',
+        body: [
+          'The Philippines brings scale, depth of industry experience and a mature provider market, with particular strength in overnight coverage for North American customers. Ghana brings an English-speaking workforce, a less saturated talent market and a time zone that aligns closely with the UK and Europe, alongside infrastructure constraints and a younger provider market that call for careful due diligence.',
+          'Neither profile makes one country the right answer for every operation. The right destination depends on the service, the talent profile, the hours that must be covered, the governance the buyer can provide and the total cost of delivering the work to the required standard.',
+          'Buyers who define the work first, compare evidence role by role and score the options against their own priorities will reach a decision they can defend, whichever location it favours. For some, that will be the Philippines. For others, particularly those with UK or European operations and a need for English-language delivery, Ghana deserves a serious place on the shortlist.',
         ],
       },
     ],
