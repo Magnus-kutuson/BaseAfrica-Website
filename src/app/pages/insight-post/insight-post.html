@@ -13,6 +13,9 @@
       </nav>
       <h1 class="text-white mb-6 leading-tight">{{ post.title }}</h1>
       <div class="flex flex-wrap gap-6 text-sm text-ink-light">
+        @if (post.author) {
+          <span>By <span class="text-white font-semibold">{{ post.author }}</span></span>
+        }
         <span class="flex items-center gap-2">
           <lucide-angular [img]="icons.Calendar" class="w-4 h-4 text-gold"></lucide-angular>
           {{ post.publishAt | date: 'd MMMM y' : 'UTC' }}

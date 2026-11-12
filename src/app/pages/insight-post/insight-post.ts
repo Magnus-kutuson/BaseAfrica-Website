@@ -91,6 +91,7 @@ export class InsightPost {
             articleSection: post.category,
             keywords: [post.primaryKeyword, ...post.keywords].join(', '),
             mainEntityOfPage: url,
+            ...(post.author && { author: { '@type': 'Organization', name: post.author } }),
             publisher: {
               '@type': 'Organization',
               name: 'Open Base Africa',

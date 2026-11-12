@@ -39,6 +39,8 @@ export interface Insight {
   /** ISO timestamp in UTC (Ghana time is GMT, so 10:00Z is 10:00 in Accra). */
   publishAt: string;
   week: number;
+  /** Byline; only set once the named author has approved it. */
+  author?: string;
   primaryKeyword: string;
   keywords: string[];
   readMinutes: number;
@@ -83,16 +85,17 @@ export const INSIGHT_CATEGORIES: { name: InsightCategory; description: string }[
 export const INSIGHTS: Insight[] = [
   {
     slug: 'outsourcing-to-ghana-offshore-operations',
-    title: 'Why International Businesses Should Consider Ghana for Offshore Operations',
+    title: 'Outsourcing to Ghana: What Businesses Should Consider',
     metaTitle: 'Outsourcing to Ghana: What Businesses Should Consider',
     metaDescription:
       'Assess Ghana for offshore operations with a practical look at talent, time zones, operating models, management needs and due diligence.',
     category: 'Ghana as a Business Destination',
     publishAt: '2026-11-10T10:00:00Z',
     week: 1,
+    author: 'Open Base Africa Editorial Team',
     primaryKeyword: 'outsourcing to Ghana',
     keywords: ['offshore operations in Ghana', 'Ghana BPO', 'business operations in Ghana', 'outsourcing in Africa'],
-    readMinutes: 10,
+    readMinutes: 11,
     intro:
       'Choosing an offshore location is not a decision about labour cost alone. It is a decision about where work can be delivered to the required standard, with the right management structure, capacity and visibility. For companies assessing Africa, Ghana deserves a careful evaluation based on the work they need done and the operating model they are prepared to support.',
     sections: [
@@ -234,6 +237,37 @@ export const INSIGHTS: Insight[] = [
             lead: 'Exit planning.',
             text: 'What happens if the relationship ends or the provider fails? How are knowledge transfer, data return, team transition and continuity handled?',
           },
+        ],
+      },
+      {
+        heading: 'How to Run a Structured Feasibility Assessment',
+        body: [
+          'A feasibility assessment turns the questions above into evidence. It does not need to be a lengthy consulting exercise, but it should be structured enough that the decision can be explained to a board, a finance committee or a sceptical operations team.',
+          {
+            lead: 'Define the work in writing.',
+            text: 'Start with a short specification for each role: the tasks, volumes, systems, decision rights, quality standard and hours of coverage. This document becomes the benchmark against which every provider and every location is tested, and it stops the conversation drifting towards generic capability statements.',
+          },
+          {
+            lead: 'Test the talent market against the specification.',
+            text: 'Ask shortlisted providers how they would recruit for the specific roles, how long it would take and which selection tests they would use. Where possible, review anonymised candidate profiles or the results of a small recruitment exercise rather than relying on national education data.',
+          },
+          {
+            lead: 'Visit the delivery environment.',
+            text: 'A site visit, in person or through a structured virtual walkthrough, shows how the workplace is secured, how power and connectivity are backed up and how teams are supervised in practice. It also shows whether the provider’s description of its operation matches what is happening on the floor.',
+          },
+          {
+            lead: 'Speak to existing clients.',
+            text: 'References are most useful when they come from clients with similar work, scale and service expectations. Ask what went wrong, how quickly it was resolved and what the client would do differently, not only whether they are satisfied.',
+          },
+          {
+            lead: 'Model the full cost and the main risks.',
+            text: 'Build a simple model that covers people, management, workplace, technology, security, transition and contingency, and set it alongside a short risk register for connectivity, power, attrition, data handling and continuity. The aim is not precision. It is to make the assumptions visible so they can be challenged.',
+          },
+          {
+            lead: 'Agree what a pilot must prove.',
+            text: 'If the assessment is positive, a bounded pilot with clear pass criteria is usually the safest next step. Define in advance the quality, productivity and reporting standards the pilot must meet, and the point at which the business will decide whether to scale, adjust or stop.',
+          },
+          'A business that completes these steps will have a defensible answer to whether Ghana fits its requirements, whichever way that answer falls.',
         ],
       },
       {
