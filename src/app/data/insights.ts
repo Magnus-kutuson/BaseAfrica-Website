@@ -553,56 +553,338 @@ export const INSIGHTS: Insight[] = [
     week: 2,
     primaryKeyword: 'setting up an offshore team in Ghana',
     keywords: ['build an offshore team', 'Ghana business operations', 'offshore team setup', 'managed operations Ghana'],
-    readMinutes: 10,
+    readMinutes: 13,
     intro:
       'An offshore team is not ready when the first employees accept their offers. It is ready when the people, systems, workspace, processes and management routines can deliver the work to an agreed standard. Companies planning an operation in Ghana should treat setup as a controlled implementation programme, not a recruitment exercise.',
     sections: [
       {
-        heading: 'Define the business outcome and work scope',
         body: [
-          'Specify processes, volumes, hours, customers or internal users, required skills, quality thresholds and what success means.',
+          'Many setup plans start and end with two questions: how many people do we need, and where will they sit? Those questions matter, but they are only part of the work. A team recruited before the scope is clear, the controls are written or the technology is tested will spend its first months working around gaps that should have been closed before launch.',
+          'Setting up an offshore team in Ghana involves a sequence of decisions about the business outcome, the operating model, local due diligence, infrastructure, people, process, governance and risk. Each decision shapes the next. This guide sets out that sequence, with the questions to answer at each stage.',
         ],
       },
       {
-        heading: 'Choose the operating and engagement model',
+        heading: 'Define the Business Outcome and Work Scope',
         body: [
-          'Compare a managed operation, direct employment, a local entity, staff augmentation and hybrid arrangements. Legal and tax implications require qualified advice.',
+          'Every later decision depends on a clear description of the work. Without one, recruitment targets the wrong profile, the workspace is sized on guesswork and service levels are agreed before anyone knows whether they are achievable.',
+          'Start with the outcome rather than the headcount. Is the aim to extend support hours, absorb growth without adding cost at home, free specialist staff from routine work, or build capacity for a new service line? The answer determines which measures matter and which trade-offs are acceptable.',
+          'Then document the work itself.',
+          {
+            lead: 'Processes.',
+            text: 'List each process the team will own, where it starts and ends, and which steps remain with the onshore team. Note any work that requires judgement, approvals or access to sensitive systems.',
+          },
+          {
+            lead: 'Volumes and patterns.',
+            text: 'Record current and forecast volumes by process, including daily, weekly and seasonal peaks, since these drive staffing and shift design.',
+          },
+          {
+            lead: 'Hours of coverage.',
+            text: 'Define the hours the work must be covered. Ghana is on GMT all year with no daylight saving, so overlap with the UK and Europe is straightforward to plan, while US coverage usually needs deliberate shift design.',
+          },
+          {
+            lead: 'Users and customers.',
+            text: 'Identify who the team will serve: external customers, internal departments or both. External customer contact carries different language, tone, escalation and data-handling requirements from internal back-office work.',
+          },
+          {
+            lead: 'Skills and knowledge.',
+            text: 'Separate the skills candidates must bring from those the business will teach. English is Ghana’s official language, but written accuracy, product knowledge, system familiarity and domain expertise should still be specified role by role.',
+          },
+          {
+            lead: 'Quality thresholds.',
+            text: 'Agree the standards the work must meet, such as accuracy, turnaround, response times and customer satisfaction, and how each will be measured. Thresholds set at this stage become the basis for QA criteria, reporting and service reviews.',
+          },
+          'Finish by writing down what success looks like at the end of the pilot, after the ramp and once the operation is stable. These definitions give the programme a finish line.',
         ],
       },
       {
-        heading: 'Complete local legal, tax and employment due diligence',
+        heading: 'Choose the Operating and Engagement Model',
         body: [
-          'Prepare questions for Ghanaian legal, tax, HR and data-protection specialists early, so that their answers shape the plan rather than delay it.',
+          'Once the scope is clear, decide how the team will be employed, managed and governed. This choice affects cost, control, risk and the management time the business must commit.',
+          'The main options are below. Many organisations combine them, and the right answer often changes as the operation matures.',
+          {
+            lead: 'Managed operation.',
+            text: 'A local partner recruits, trains, supervises and reports on the team against agreed service levels, usually within the partner’s own facilities and systems. The business controls the work through scope, standards and governance rather than direct line management. The quality of the partner’s local leadership is the decisive factor.',
+          },
+          {
+            lead: 'Direct employment.',
+            text: 'The business hires staff in Ghana directly, or through an intermediary arrangement, and manages them itself. This offers close control over individuals but places supervision, quality, workspace, technology and continuity on the business, often from a distance.',
+          },
+          {
+            lead: 'Local entity.',
+            text: 'The business establishes its own legal presence in Ghana and builds a captive operation. This gives the most direct ownership of people, processes and assets. It also requires the most setup effort, local leadership on the ground and ongoing legal, tax and administrative obligations.',
+          },
+          {
+            lead: 'Staff augmentation.',
+            text: 'A provider supplies individuals who work within the business’s existing teams, under its direction. This can suit a few specialist roles, but less so a process that needs its own supervision and quality structure.',
+          },
+          {
+            lead: 'Hybrid arrangements.',
+            text: 'The business retains some elements, such as process ownership, quality standards or senior roles, while a partner provides recruitment, facilities, supervision and day-to-day operations. Some organisations start with a managed model and keep the option of moving to their own entity once volumes and processes are proven.',
+          },
+          'When comparing these options, be explicit about who employs the team, who supervises it day to day, who owns the equipment and data, who is accountable for quality and who carries the cost of attrition. Ambiguity here tends to surface after launch, when it is harder to fix.',
+          'Each model also has legal, tax and employment implications that differ by structure. Those implications require qualified advice from specialists in Ghanaian law and tax, and in the business’s home jurisdiction, before a model is chosen.',
         ],
       },
       {
-        heading: 'Plan the workplace, technology and resilience',
+        heading: 'Complete Local Legal, Tax and Employment Due Diligence',
         body: [
-          'Cover workspace, devices, connectivity, access controls, power continuity, software, equipment ownership and support arrangements.',
+          'Due diligence is often treated as a box to tick after the operating model has been chosen. It works better the other way round: answers from qualified Ghanaian specialists should shape the model, the plan and the budget.',
+          'This article does not offer legal or tax advice, and no general guide can tell a business whether its proposed structure is compliant. It can help you prepare focused questions for legal, tax, HR and data-protection advisers.',
+          {
+            lead: 'Corporate and legal structure.',
+            text: 'What registrations, licences or permits would the proposed model require? Does the business need a local entity, or can the work be delivered through a partner or intermediary? What obligations follow from each option, and how easily could the structure be changed later?',
+          },
+          {
+            lead: 'Tax.',
+            text: 'How would the proposed arrangement be treated for corporate tax, withholding tax and indirect tax purposes in Ghana and in the home country? Could the operation create a taxable presence? How should cross-border service fees be structured and documented?',
+          },
+          {
+            lead: 'Employment.',
+            text: 'What does Ghanaian employment law require on contracts, working hours, overtime, night work, leave, termination and statutory contributions? Which obligations sit with the business and which with a partner or employer of record?',
+          },
+          {
+            lead: 'HR practice.',
+            text: 'What checks can lawfully be carried out during recruitment? What are the usual expectations on benefits, allowances and transport for shift work? Which policies and procedures should be in place from the first day?',
+          },
+          {
+            lead: 'Data protection.',
+            text: 'How does Ghana’s Data Protection Act, 2012 (Act 843) apply to the data the team will handle? What registration, consent, security and cross-border transfer requirements need to be met? How do these interact with the business’s obligations under its home regulations and its customers’ contracts?',
+          },
+          {
+            lead: 'Sector rules.',
+            text: 'Does the work involve regulated activity, such as financial services, healthcare or payments, that brings additional requirements in either jurisdiction?',
+          },
+          'Record the questions, the answers and the adviser who gave them, so decisions can be revisited when the scope or the model changes.',
         ],
       },
       {
-        heading: 'Recruit, onboard and train for the actual process',
+        heading: 'Plan the Workplace, Technology and Resilience',
         body: [
-          'Build role profiles and selection criteria around the real work, then follow with onboarding, training plans, competency checks and a supported nesting period.',
+          'The physical and technical environment determines whether the team can work consistently, securely and without avoidable interruption. In Ghana, fibre cuts and grid instability make backup power and redundant connectivity essential rather than optional.',
+          'Resilience should be designed in from the start, not added after the first outage. Work through each of the following before the first live shift.',
+          {
+            lead: 'Workspace.',
+            text: 'Decide whether the team will work from a dedicated facility, a shared or partner site, from home, or a mix. Consider seats per shift, room for growth, physical security, training space and working conditions.',
+          },
+          {
+            lead: 'Devices and equipment.',
+            text: 'Specify the computers, headsets, monitors and peripherals each role needs. Agree who procures, owns, insures, maintains and replaces each item, and what happens to equipment and data when someone leaves or the arrangement ends.',
+          },
+          {
+            lead: 'Connectivity.',
+            text: 'Plan for primary and backup internet links, from different providers where possible, with enough capacity for voice, video and core applications at peak load. Test failover rather than assuming it works.',
+          },
+          {
+            lead: 'Power continuity.',
+            text: 'Confirm how the site will stay operational during grid interruptions, whether through generators, uninterruptible power supplies or both, and who is responsible for fuel, maintenance and testing.',
+          },
+          {
+            lead: 'Software and access.',
+            text: 'List every application the team needs, the licences required and who pays for them. Define access by role using the minimum permissions needed, with multi-factor authentication. Align data-handling and device controls with the business’s own security policies.',
+          },
+          {
+            lead: 'Support arrangements.',
+            text: 'Decide who provides first-line IT support on site, who handles escalations to the business’s own IT team, and what response times apply when systems fail during live operations.',
+          },
+          'Test the full environment before the team starts live work. A technical rehearsal that simulates a normal day, including a deliberate power or connectivity failure, will expose gaps far more cheaply than a live outage.',
         ],
       },
       {
-        heading: 'Document processes and controls before launch',
+        heading: 'Recruit, Onboard and Train for the Actual Process',
         body: [
-          'Put SOPs, escalation paths, access permissions, QA criteria, reporting and business continuity plans in place before the team goes live.',
+          'Recruitment is where many offshore setups begin, and it is where gaps in the earlier stages become visible. If the scope is vague, role profiles will be generic. If the processes are undocumented, training will rely on informal knowledge transfer.',
+          'The aim is to recruit and prepare people for the work they will actually do, not for a general job title.',
+          {
+            lead: 'Role profiles.',
+            text: 'Write a profile for each role covering the processes it owns, the systems it uses, the hours it works, the language standard required and the measures it will be judged against.',
+          },
+          {
+            lead: 'Selection criteria.',
+            text: 'Turn each profile into criteria that can be tested. Practical assessments that mirror real tasks, such as drafting a customer email, processing a sample transaction or handling a role-played call, reveal more than interviews alone.',
+          },
+          {
+            lead: 'Background checks.',
+            text: 'Where lawful and proportionate, and with the candidate’s consent, verify identity, qualifications, employment history and any other checks the work justifies. Local advice should confirm what is permitted.',
+          },
+          {
+            lead: 'Onboarding.',
+            text: 'Plan the first days in detail: contracts, policies, system access, equipment, introductions to key contacts and an explanation of how the team’s work fits the wider business.',
+          },
+          {
+            lead: 'Training plans.',
+            text: 'Build a structured plan for each role that covers products, processes, systems, quality standards, tone of voice and escalation rules. Involve the onshore process owners, who hold knowledge that is rarely written down.',
+          },
+          {
+            lead: 'Competency checks.',
+            text: 'Set clear tests that each person must pass before handling live work. These might include system assessments, scored practice cases or supervised work that meets the agreed quality threshold.',
+          },
+          {
+            lead: 'Nesting.',
+            text: 'Plan a supported period after classroom training in which new starters handle live work with closer supervision, faster feedback and adjusted targets. Nesting is where knowledge gaps surface and where coaching has the most effect.',
+          },
+          'Where possible, recruit supervisors and team leaders first, so they can help shape training and selection before they are responsible for the work.',
         ],
       },
       {
-        heading: 'Launch in phases and review performance',
+        heading: 'Document Processes and Controls Before Launch',
         body: [
-          'Start with a pilot, ramp in a controlled way, review daily at launch and move to formal service reviews once the operation is stable.',
+          'An offshore team can only deliver to a standard that has been written down. Knowledge held in the heads of onshore staff does not transfer reliably, and controls that exist only as intentions are not controls.',
+          {
+            lead: 'Standard operating procedures.',
+            text: 'Write step-by-step SOPs for each process, including inputs, system steps, decision rules, exceptions and expected outputs. Version them, assign an owner and agree how changes will be approved and communicated.',
+          },
+          {
+            lead: 'Escalation paths.',
+            text: 'Define what must be escalated, to whom, through which channel and within what time. Cover operational issues, customer complaints, system failures, suspected security incidents and data protection concerns.',
+          },
+          {
+            lead: 'Access permissions.',
+            text: 'Record which roles have access to which systems and data, who approves access, and how access is reviewed and removed. Schedule periodic access reviews from the start.',
+          },
+          {
+            lead: 'Quality assurance criteria.',
+            text: 'Translate the quality thresholds from the scope into scorecards and sampling rules. Agree how much work will be checked, by whom, how results will be calibrated between onshore and offshore reviewers and how feedback will be given.',
+          },
+          {
+            lead: 'Reporting.',
+            text: 'Specify the daily, weekly and monthly reports the operation will produce, the measures each will contain, the data sources and who receives them. Agree definitions so that both sides interpret the numbers in the same way.',
+          },
+          {
+            lead: 'Business continuity plans.',
+            text: 'Document how the operation will respond to power or connectivity failures, system outages, staff absence, problems accessing the facility and other disruptions. Assign responsibilities, set recovery priorities and plan when the arrangements will be tested.',
+          },
+          'The table below can serve as a pre-launch readiness check. Each item should have a named owner and evidence that it is complete, not just a status of "in progress".',
+        ],
+        table: {
+          headers: ['Area', 'Ready when', 'Evidence to request'],
+          rows: [
+            [
+              'Scope and success measures',
+              'Processes, volumes, hours and quality thresholds are agreed in writing',
+              'Signed scope document and success criteria',
+            ],
+            [
+              'Operating model',
+              'Employment, supervision, ownership and accountability are clear',
+              'Agreed model description and contract terms',
+            ],
+            [
+              'Local due diligence',
+              'Legal, tax, employment and data-protection questions have qualified answers',
+              'Adviser responses and an action log',
+            ],
+            [
+              'Workplace and technology',
+              'Seats, devices, connectivity, power and access are in place and tested',
+              'Technical rehearsal and failover test results',
+            ],
+            ['People', 'Roles are filled and staff have passed competency checks', 'Assessment results and training records'],
+            [
+              'Process and controls',
+              'SOPs, escalation paths, access rules and QA criteria are approved',
+              'Version-controlled documents with named owners',
+            ],
+            [
+              'Reporting and governance',
+              'Reports, meetings and escalation routes are defined',
+              'Sample reporting pack and governance calendar',
+            ],
+            [
+              'Continuity',
+              'Continuity plans are documented and key scenarios have been tested',
+              'Continuity plan and test record',
+            ],
+          ],
+          note: 'Adapt the areas and evidence to your operation. Treat any item without evidence as not ready.',
+        },
+      },
+      {
+        heading: 'Launch in Phases and Review Performance',
+        body: [
+          'Moving all of the work offshore on a single date concentrates risk. A phased launch lets the business test the people, processes and technology on a limited scope, fix what does not work and expand only when the evidence supports it.',
+          'The pace of each phase should be set by performance against agreed criteria, not by a calendar fixed in advance.',
+          {
+            lead: 'Pilot.',
+            text: 'Start with a defined subset of the work, such as one process, one queue or one customer segment, handled by a small group. Keep onshore cover available so that problems do not reach customers. Agree before the pilot starts what results will justify moving forward.',
+          },
+          {
+            lead: 'Controlled ramp.',
+            text: 'Add volume, processes or headcount in steps. Before each step, confirm that quality, productivity and stability have held at the current level and that the next group of staff has completed training and competency checks.',
+          },
+          {
+            lead: 'Daily reviews at launch.',
+            text: 'In the early stages, hold short daily reviews between offshore team leads and onshore process owners to cover volumes, quality, escalations and system issues, and agree actions before the next shift.',
+          },
+          {
+            lead: 'Formal service reviews.',
+            text: 'As the operation stabilises, move from daily problem-solving to a structured cycle of operational reviews and periodic service reviews against the agreed measures.',
+          },
+          'Expect performance to dip at each step of the ramp. What matters is whether issues are identified quickly and corrected.',
+          'Define in advance the conditions that would pause the ramp, such as quality falling below threshold for a set period. Agreeing these triggers early removes the pressure to push ahead against the evidence.',
         ],
       },
       {
-        heading: 'Create a clear operating governance rhythm',
+        heading: 'Create a Clear Operating Governance Rhythm',
         body: [
-          'Set owners, meeting cadence, a reporting pack, issue escalation, change control and service review responsibilities.',
+          'Governance is what keeps an offshore operation aligned with the business once the implementation team has stepped back. Without it, small issues accumulate, priorities drift and the relationship becomes reactive.',
+          {
+            lead: 'Owners.',
+            text: 'Name an accountable owner on each side for the overall relationship, for each process and for functions such as quality, workforce planning, IT and security. Owners should have the authority to make decisions, not only to relay messages.',
+          },
+          {
+            lead: 'Meeting cadence.',
+            text: 'Set a regular schedule of meetings, each with a clear purpose and attendees. Shorter-cycle sessions focus on operations, longer-cycle ones on performance and direction.',
+          },
+          {
+            lead: 'Reporting pack.',
+            text: 'Agree a standard set of reports covering volumes, service levels, quality, productivity, attrition, absence, escalations, risks and open actions.',
+          },
+          {
+            lead: 'Issue escalation.',
+            text: 'Define severity levels, response expectations and the route from team leader to senior management on both sides. Everyone should know who to contact when something goes wrong outside normal hours.',
+          },
+          {
+            lead: 'Change control.',
+            text: 'Agree how changes to processes, systems, volumes, hours or headcount are requested, assessed, approved and implemented. Uncontrolled change is a frequent cause of quality problems after launch.',
+          },
+          {
+            lead: 'Service review responsibilities.',
+            text: 'Clarify who prepares the service review, who attends, which decisions it can take and how actions are tracked to completion.',
+          },
+          'A typical rhythm might look like the table below. The exact cadence should reflect the size, complexity and risk of the operation.',
+        ],
+        table: {
+          headers: ['Forum', 'Frequency', 'Focus', 'Typical attendees'],
+          rows: [
+            ['Shift handover', 'Each shift', 'Open work, issues and priorities for the next shift', 'Team leaders'],
+            [
+              'Operational review',
+              'Daily at launch, then weekly',
+              'Volumes, quality, escalations, staffing and system issues',
+              'Offshore operations lead and onshore process owners',
+            ],
+            [
+              'Performance review',
+              'Monthly',
+              'Results against targets, trends, risks, improvement actions and change requests',
+              'Operations leads and the quality and workforce planning owners',
+            ],
+            [
+              'Strategic service review',
+              'Quarterly',
+              'Direction, scope changes, capacity planning, commercial terms and relationship health',
+              'Senior sponsors from both sides',
+            ],
+          ],
+          note: 'Illustrative only. Adjust the frequency and attendees to the size and risk of the operation.',
+        },
+      },
+      {
+        heading: 'Closing: Treat Setup as an Implementation Programme',
+        body: [
+          'Setting up an offshore team in Ghana is not a single decision. It is a sequence of business, people, infrastructure, process, governance and risk decisions, each of which shapes the next. Organisations that work through them in order, and test each one before moving on, give their teams the conditions they need to perform.',
+          'The work done before launch is rarely visible to customers, but its absence usually is. It is what separates an operation that delivers from one that is always catching up.',
+          'Ghana offers an English-speaking workforce and a time zone that aligns closely with the UK and Europe. Turning those attributes into dependable delivery depends on how carefully the operation is designed, launched and managed.',
         ],
       },
     ],
