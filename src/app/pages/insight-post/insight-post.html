@@ -39,10 +39,20 @@
             <h2 class="text-2xl font-bold text-navy mt-10 mb-4">{{ section.heading }}</h2>
           }
           @for (para of section.body; track $index) {
-            @if (typeof para === 'string') {
+            @if (listItems(para); as items) {
+              <ul class="list-disc pl-6 mb-4 space-y-2">
+                @for (item of items; track $index) {
+                  @if (typeof item === 'string') {
+                    <li class="leading-relaxed">{{ item }}</li>
+                  } @else {
+                    <li class="leading-relaxed"><strong class="text-navy">{{ item.lead }}</strong> {{ item.text }}</li>
+                  }
+                }
+              </ul>
+            } @else if (typeof para === 'string') {
               <p class="leading-relaxed mb-4">{{ para }}</p>
-            } @else {
-              <p class="leading-relaxed mb-4"><strong class="text-navy">{{ para.lead }}</strong> {{ para.text }}</p>
+            } @else if (leadText(para); as p) {
+              <p class="leading-relaxed mb-4"><strong class="text-navy">{{ p.lead }}</strong> {{ p.text }}</p>
             }
           }
           @if (section.table; as table) {

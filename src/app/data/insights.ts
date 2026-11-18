@@ -21,7 +21,10 @@ export type InsightCategory =
   | 'Operational Strategy and Growth';
 
 /** A plain paragraph, or one that opens with a bold run-in label. */
-export type InsightParagraph = string | { lead: string; text: string };
+export type InsightText = string | { lead: string; text: string };
+
+/** A paragraph, or a bulleted list of items. */
+export type InsightParagraph = InsightText | { list: InsightText[] };
 
 export interface InsightSection {
   /** Omit for paragraphs that sit between the intro and the first heading. */
@@ -551,340 +554,303 @@ export const INSIGHTS: Insight[] = [
     category: 'Offshore Operations and Expansion',
     publishAt: '2026-11-17T10:00:00Z',
     week: 2,
+    author: 'Open Base Africa Editorial Team',
     primaryKeyword: 'setting up an offshore team in Ghana',
     keywords: ['build an offshore team', 'Ghana business operations', 'offshore team setup', 'managed operations Ghana'],
-    readMinutes: 13,
+    readMinutes: 11,
     intro:
       'An offshore team is not ready when the first employees accept their offers. It is ready when the people, systems, workspace, processes and management routines can deliver the work to an agreed standard. Companies planning an operation in Ghana should treat setup as a controlled implementation programme, not a recruitment exercise.',
     sections: [
       {
         body: [
-          'Many setup plans start and end with two questions: how many people do we need, and where will they sit? Those questions matter, but they are only part of the work. A team recruited before the scope is clear, the controls are written or the technology is tested will spend its first months working around gaps that should have been closed before launch.',
-          'Setting up an offshore team in Ghana involves a sequence of decisions about the business outcome, the operating model, local due diligence, infrastructure, people, process, governance and risk. Each decision shapes the next. This guide sets out that sequence, with the questions to answer at each stage.',
+          'Many businesses underestimate the operational burden of establishing a team in a new country. They focus on finding talent and securing an office, only to discover that the real challenge lies in building the management infrastructure required to make that team productive. Setting up in Ghana requires a sequence of decisions across business, people, infrastructure, process and governance.',
+          'If any one of those workstreams is neglected, the operation will eventually stall.',
         ],
       },
       {
         heading: 'Define the Business Outcome and Work Scope',
         body: [
-          'Every later decision depends on a clear description of the work. Without one, recruitment targets the wrong profile, the workspace is sized on guesswork and service levels are agreed before anyone knows whether they are achievable.',
-          'Start with the outcome rather than the headcount. Is the aim to extend support hours, absorb growth without adding cost at home, free specialist staff from routine work, or build capacity for a new service line? The answer determines which measures matter and which trade-offs are acceptable.',
-          'Then document the work itself.',
+          'Before you look at a single CV or office space, you must define exactly what the operation is meant to achieve. A country profile will not tell you this. Your business strategy will.',
+          'Specify the processes you intend to transition. Define the expected volumes, the working hours, the customer or internal users, and the required language skills. Establish clear quality thresholds and what success looks like at the end of the first 90 days. If you cannot measure the work, you cannot manage it, and you cannot outsource it.',
+          'To make this concrete, create a one-page operational blueprint. It should answer three questions:',
           {
-            lead: 'Processes.',
-            text: 'List each process the team will own, where it starts and ends, and which steps remain with the onshore team. Note any work that requires judgement, approvals or access to sensitive systems.',
+            list: [
+              {
+                lead: 'What work is moving?',
+                text: '(e.g., Tier 1 customer support, data entry, back-office processing).',
+              },
+              { lead: 'What are the service levels?', text: '(e.g., 80% of emails answered within 4 hours).' },
+              {
+                lead: 'What is the volume forecast?',
+                text: '(e.g., 500 tickets per day, scaling to 1,000 by month six).',
+              },
+            ],
           },
-          {
-            lead: 'Volumes and patterns.',
-            text: 'Record current and forecast volumes by process, including daily, weekly and seasonal peaks, since these drive staffing and shift design.',
-          },
-          {
-            lead: 'Hours of coverage.',
-            text: 'Define the hours the work must be covered. Ghana is on GMT all year with no daylight saving, so overlap with the UK and Europe is straightforward to plan, while US coverage usually needs deliberate shift design.',
-          },
-          {
-            lead: 'Users and customers.',
-            text: 'Identify who the team will serve: external customers, internal departments or both. External customer contact carries different language, tone, escalation and data-handling requirements from internal back-office work.',
-          },
-          {
-            lead: 'Skills and knowledge.',
-            text: 'Separate the skills candidates must bring from those the business will teach. English is Ghana’s official language, but written accuracy, product knowledge, system familiarity and domain expertise should still be specified role by role.',
-          },
-          {
-            lead: 'Quality thresholds.',
-            text: 'Agree the standards the work must meet, such as accuracy, turnaround, response times and customer satisfaction, and how each will be measured. Thresholds set at this stage become the basis for QA criteria, reporting and service reviews.',
-          },
-          'Finish by writing down what success looks like at the end of the pilot, after the ramp and once the operation is stable. These definitions give the programme a finish line.',
+          'Without this blueprint, you cannot accurately scope the office size, the recruitment pipeline, or the management structure required.',
         ],
       },
       {
         heading: 'Choose the Operating and Engagement Model',
         body: [
-          'Once the scope is clear, decide how the team will be employed, managed and governed. This choice affects cost, control, risk and the management time the business must commit.',
-          'The main options are below. Many organisations combine them, and the right answer often changes as the operation matures.',
-          {
-            lead: 'Managed operation.',
-            text: 'A local partner recruits, trains, supervises and reports on the team against agreed service levels, usually within the partner’s own facilities and systems. The business controls the work through scope, standards and governance rather than direct line management. The quality of the partner’s local leadership is the decisive factor.',
-          },
-          {
-            lead: 'Direct employment.',
-            text: 'The business hires staff in Ghana directly, or through an intermediary arrangement, and manages them itself. This offers close control over individuals but places supervision, quality, workspace, technology and continuity on the business, often from a distance.',
-          },
-          {
-            lead: 'Local entity.',
-            text: 'The business establishes its own legal presence in Ghana and builds a captive operation. This gives the most direct ownership of people, processes and assets. It also requires the most setup effort, local leadership on the ground and ongoing legal, tax and administrative obligations.',
-          },
-          {
-            lead: 'Staff augmentation.',
-            text: 'A provider supplies individuals who work within the business’s existing teams, under its direction. This can suit a few specialist roles, but less so a process that needs its own supervision and quality structure.',
-          },
-          {
-            lead: 'Hybrid arrangements.',
-            text: 'The business retains some elements, such as process ownership, quality standards or senior roles, while a partner provides recruitment, facilities, supervision and day-to-day operations. Some organisations start with a managed model and keep the option of moving to their own entity once volumes and processes are proven.',
-          },
-          'When comparing these options, be explicit about who employs the team, who supervises it day to day, who owns the equipment and data, who is accountable for quality and who carries the cost of attrition. Ambiguity here tends to surface after launch, when it is harder to fix.',
-          'Each model also has legal, tax and employment implications that differ by structure. Those implications require qualified advice from specialists in Ghanaian law and tax, and in the business’s home jurisdiction, before a model is chosen.',
+          'You must decide how the operation will be structured. There is no universal right answer, but there are distinct models.',
+          'You can choose a fully managed operation, where a partner handles the infrastructure, recruitment, and daily management. Alternatively, you might pursue direct employment through a local entity, where you hire and manage the staff yourself. Staff augmentation and hybrid arrangements are also options.',
+          'The choice you make here has significant legal, tax, and operational implications. The model you choose must align with the level of control you require and the internal management capacity you possess.',
+          'If your internal management team is already stretched thin, a fully managed build-and-run model will get you to market faster than attempting to build a captive entity from scratch.',
         ],
       },
       {
         heading: 'Complete Local Legal, Tax and Employment Due Diligence',
         body: [
-          'Due diligence is often treated as a box to tick after the operating model has been chosen. It works better the other way round: answers from qualified Ghanaian specialists should shape the model, the plan and the budget.',
-          'This article does not offer legal or tax advice, and no general guide can tell a business whether its proposed structure is compliant. It can help you prepare focused questions for legal, tax, HR and data-protection advisers.',
-          {
-            lead: 'Corporate and legal structure.',
-            text: 'What registrations, licences or permits would the proposed model require? Does the business need a local entity, or can the work be delivered through a partner or intermediary? What obligations follow from each option, and how easily could the structure be changed later?',
-          },
-          {
-            lead: 'Tax.',
-            text: 'How would the proposed arrangement be treated for corporate tax, withholding tax and indirect tax purposes in Ghana and in the home country? Could the operation create a taxable presence? How should cross-border service fees be structured and documented?',
-          },
-          {
-            lead: 'Employment.',
-            text: 'What does Ghanaian employment law require on contracts, working hours, overtime, night work, leave, termination and statutory contributions? Which obligations sit with the business and which with a partner or employer of record?',
-          },
-          {
-            lead: 'HR practice.',
-            text: 'What checks can lawfully be carried out during recruitment? What are the usual expectations on benefits, allowances and transport for shift work? Which policies and procedures should be in place from the first day?',
-          },
-          {
-            lead: 'Data protection.',
-            text: 'How does Ghana’s Data Protection Act, 2012 (Act 843) apply to the data the team will handle? What registration, consent, security and cross-border transfer requirements need to be met? How do these interact with the business’s obligations under its home regulations and its customers’ contracts?',
-          },
-          {
-            lead: 'Sector rules.',
-            text: 'Does the work involve regulated activity, such as financial services, healthcare or payments, that brings additional requirements in either jurisdiction?',
-          },
-          'Record the questions, the answers and the adviser who gave them, so decisions can be revisited when the scope or the model changes.',
+          'Operating in Ghana means complying with Ghanaian law. This is not an area where you should rely on assumptions or generic advice.',
+          'You must engage qualified local counsel to assess the legal, tax, human resources and data protection requirements. The questions you need to answer include how to register an entity with the Office of the Registrar of Companies, how to handle payroll taxes with the Ghana Revenue Authority, and what statutory employment obligations apply under the Labour Act.',
+          'Data protection is equally critical. You must ensure compliance with the Data Protection Act, 2012 (Act 843). This includes registering as a data controller and ensuring that the physical and digital environments meet the security standards required for the data you are handling.',
+          'Do not build a business case based on offshore wage estimates without understanding the statutory employer costs. Professional advice is an essential setup cost, not an optional extra.',
         ],
       },
       {
         heading: 'Plan the Workplace, Technology and Resilience',
         body: [
-          'The physical and technical environment determines whether the team can work consistently, securely and without avoidable interruption. In Ghana, fibre cuts and grid instability make backup power and redundant connectivity essential rather than optional.',
-          'Resilience should be designed in from the start, not added after the first outage. Work through each of the following before the first live shift.',
+          'The physical and digital environment is the engine of the operation. You cannot run a professional team from a makeshift environment.',
+          'Your infrastructure plan must cover the workspace, devices, connectivity, access controls and software. In Ghana, power resilience and connectivity redundancy are critical planning considerations. You must assess the availability of backup power, the reliability of internet connections, and the security of the facility.',
+          'If you are using a managed partner, you should audit their facilities to confirm they have the redundant power and connectivity required to maintain service during disruptions.',
+          'Facility due diligence checklist:',
           {
-            lead: 'Workspace.',
-            text: 'Decide whether the team will work from a dedicated facility, a shared or partner site, from home, or a mix. Consider seats per shift, room for growth, physical security, training space and working conditions.',
+            list: [
+              {
+                lead: 'Power:',
+                text: 'Does the facility have automatic generator failover and UPS backup for all workstations? How long can the generator run without refuelling?',
+              },
+              {
+                lead: 'Connectivity:',
+                text: 'Are there at least two independent internet service providers (ISPs) with diverse routing? Does the network failover automatically?',
+              },
+              {
+                lead: 'Security:',
+                text: 'Is there 24/7 physical security, biometric access control, and CCTV coverage of the production floor?',
+              },
+              { lead: 'Ergonomics:', text: 'Are the desks, chairs, and monitors suitable for 8-hour shifts?' },
+            ],
           },
+        ],
+      },
+      {
+        heading: 'Plan the Leadership Structure Before the First Hire',
+        body: [
+          'Most setup plans describe the frontline team in detail and the leadership layer in a single line. That is backwards. The quality of the first supervisors and managers will shape the operation more than any individual hire beneath them.',
+          'Decide early which leadership roles the operation needs and when each must be in place. A small team may need only a team leader and a shared quality analyst. A larger or more complex operation will also need an operations manager, a workforce planner and a dedicated trainer. The right structure depends on the complexity of the work, the number of shifts and how much judgement frontline staff are expected to exercise.',
           {
-            lead: 'Devices and equipment.',
-            text: 'Specify the computers, headsets, monitors and peripherals each role needs. Agree who procures, owns, insures, maintains and replaces each item, and what happens to equipment and data when someone leaves or the arrangement ends.',
+            list: [
+              {
+                lead: 'Operations manager:',
+                text: 'Owns delivery, staffing decisions, escalations and the relationship with the client lead.',
+              },
+              {
+                lead: 'Team leaders:',
+                text: 'Run each shift, coach individuals, manage attendance and handle first-level escalations.',
+              },
+              {
+                lead: 'Quality analyst:',
+                text: 'Samples completed work, scores it against agreed criteria and feeds findings back into training.',
+              },
+              {
+                lead: 'Trainer:',
+                text: 'Builds and delivers the training path and keeps materials aligned with process changes.',
+              },
+            ],
           },
-          {
-            lead: 'Connectivity.',
-            text: 'Plan for primary and backup internet links, from different providers where possible, with enough capacity for voice, video and core applications at peak load. Test failover rather than assuming it works.',
-          },
-          {
-            lead: 'Power continuity.',
-            text: 'Confirm how the site will stay operational during grid interruptions, whether through generators, uninterruptible power supplies or both, and who is responsible for fuel, maintenance and testing.',
-          },
-          {
-            lead: 'Software and access.',
-            text: 'List every application the team needs, the licences required and who pays for them. Define access by role using the minimum permissions needed, with multi-factor authentication. Align data-handling and device controls with the business’s own security policies.',
-          },
-          {
-            lead: 'Support arrangements.',
-            text: 'Decide who provides first-line IT support on site, who handles escalations to the business’s own IT team, and what response times apply when systems fail during live operations.',
-          },
-          'Test the full environment before the team starts live work. A technical rehearsal that simulates a normal day, including a deliberate power or connectivity failure, will expose gaps far more cheaply than a live outage.',
+          'Hire or appoint leaders before the first frontline cohort, not alongside it. They should help shape role profiles, take part in selection and go through process training themselves, so that they can supervise the work rather than learn it at the same time as their team.',
+          'On the client side, name a single owner for the relationship. That person approves process changes, resolves policy questions and attends governance meetings. When ownership is spread across several busy managers, decisions slow down and the offshore team waits.',
         ],
       },
       {
         heading: 'Recruit, Onboard and Train for the Actual Process',
         body: [
-          'Recruitment is where many offshore setups begin, and it is where gaps in the earlier stages become visible. If the scope is vague, role profiles will be generic. If the processes are undocumented, training will rely on informal knowledge transfer.',
-          'The aim is to recruit and prepare people for the work they will actually do, not for a general job title.',
+          'Recruitment in Ghana is competitive. The country produces a large volume of graduates, but sourcing the right people for your specific roles requires a structured approach.',
+          'Build clear role profiles and define your selection criteria. Where lawful, conduct background checks. Do not rely solely on resumes. Use structured assessments to test for the specific skills required, whether that is written English proficiency, software proficiency, or logical reasoning.',
+          'More importantly, do not confuse hiring with onboarding. You must develop a training plan that moves new hires from basic knowledge to competency. A standard training path looks like this:',
           {
-            lead: 'Role profiles.',
-            text: 'Write a profile for each role covering the processes it owns, the systems it uses, the hours it works, the language standard required and the measures it will be judged against.',
+            list: [
+              { lead: 'Foundation Training:', text: 'Company culture, systems access, and product knowledge.' },
+              { lead: 'Process Training:', text: 'Detailed walkthroughs of the standard operating procedures.' },
+              {
+                lead: 'Nesting:',
+                text: 'New agents handle live work under close supervision, with their quality checked in real-time.',
+              },
+              {
+                lead: 'Production:',
+                text: 'The agent moves to full independent work, subject to regular QA sampling.',
+              },
+            ],
+          },
+          'A robust onboarding process is the difference between a functioning team and a high early-attrition rate.',
+        ],
+      },
+      {
+        heading: 'Prepare the Transition and Knowledge Transfer',
+        body: [
+          'If the work is moving from an existing team, the transition deserves its own plan. Knowledge that lives in the heads of experienced staff at headquarters does not transfer by itself, and it is often the knowledge that matters most when something unusual happens.',
+          {
+            lead: 'Process discovery.',
+            text: 'Before training begins, map how the work is actually done today, not how the manual says it is done. Capture the exceptions, workarounds and judgement calls that experienced staff make without thinking about them.',
           },
           {
-            lead: 'Selection criteria.',
-            text: 'Turn each profile into criteria that can be tested. Practical assessments that mirror real tasks, such as drafting a customer email, processing a sample transaction or handling a role-played call, reveal more than interviews alone.',
+            lead: 'Shadowing.',
+            text: 'Let the new team leaders and trainers observe the current team at work, either in person or through recorded sessions and live screen sharing. This is often where undocumented steps come to light.',
           },
           {
-            lead: 'Background checks.',
-            text: 'Where lawful and proportionate, and with the candidate’s consent, verify identity, qualifications, employment history and any other checks the work justifies. Local advice should confirm what is permitted.',
+            lead: 'Parallel running.',
+            text: 'Where the risk justifies it, run the new team alongside the existing one for a period, comparing outputs before responsibility is handed over. Agree in advance what the comparison must show.',
           },
           {
-            lead: 'Onboarding.',
-            text: 'Plan the first days in detail: contracts, policies, system access, equipment, introductions to key contacts and an explanation of how the team’s work fits the wider business.',
+            lead: 'Sign-off and rollback.',
+            text: 'Define who signs off each process as ready to transfer, and what happens if quality drops after handover. A rollback plan is not a sign of pessimism. It is what allows the business to move with confidence.',
+          },
+          'Keep the subject-matter experts at headquarters available after go-live. The first weeks of live work will raise questions that no training session anticipated, and a fast answer protects both quality and morale.',
+        ],
+      },
+      {
+        heading: 'Prepare Your Headquarters Team for the Change',
+        body: [
+          'Setup plans tend to focus on the new team and overlook the existing one. Yet the people at headquarters will train the offshore team, answer its questions, review its work and decide whether it is trusted. Their attitude can speed up the launch or quietly undermine it.',
+          {
+            lead: 'Explain the reason early.',
+            text: 'Staff who hear about an offshore team through rumour will assume the worst. Explain what the operation is for, which work it will take on and what it means for existing roles, as honestly as the business can.',
           },
           {
-            lead: 'Training plans.',
-            text: 'Build a structured plan for each role that covers products, processes, systems, quality standards, tone of voice and escalation rules. Involve the onshore process owners, who hold knowledge that is rarely written down.',
+            lead: 'Give people defined roles in the launch.',
+            text: 'Name the subject-matter experts who will support training and answer escalations, and build that time into their workload rather than adding it on top. Recognise the contribution when the launch goes well.',
           },
           {
-            lead: 'Competency checks.',
-            text: 'Set clear tests that each person must pass before handling live work. These might include system assessments, scored practice cases or supervised work that meets the agreed quality threshold.',
+            lead: 'Treat the offshore team as colleagues.',
+            text: 'Include them in team meetings, internal communications and recognition. Introduce people by name, not by location. An operation that is treated as a separate supplier tends to behave like one.',
           },
           {
-            lead: 'Nesting.',
-            text: 'Plan a supported period after classroom training in which new starters handle live work with closer supervision, faster feedback and adjusted targets. Nesting is where knowledge gaps surface and where coaching has the most effect.',
+            lead: 'Plan visits in both directions.',
+            text: 'Where budgets allow, a visit from headquarters leaders to Accra, or from Ghana-based team leaders to headquarters, builds working relationships that make every later conversation easier.',
           },
-          'Where possible, recruit supervisors and team leaders first, so they can help shape training and selection before they are responsible for the work.',
+          'Integration takes deliberate effort, but it pays back in faster escalation, better knowledge sharing and a team that understands the business it serves.',
         ],
       },
       {
         heading: 'Document Processes and Controls Before Launch',
         body: [
-          'An offshore team can only deliver to a standard that has been written down. Knowledge held in the heads of onshore staff does not transfer reliably, and controls that exist only as intentions are not controls.',
-          {
-            lead: 'Standard operating procedures.',
-            text: 'Write step-by-step SOPs for each process, including inputs, system steps, decision rules, exceptions and expected outputs. Version them, assign an owner and agree how changes will be approved and communicated.',
-          },
-          {
-            lead: 'Escalation paths.',
-            text: 'Define what must be escalated, to whom, through which channel and within what time. Cover operational issues, customer complaints, system failures, suspected security incidents and data protection concerns.',
-          },
-          {
-            lead: 'Access permissions.',
-            text: 'Record which roles have access to which systems and data, who approves access, and how access is reviewed and removed. Schedule periodic access reviews from the start.',
-          },
-          {
-            lead: 'Quality assurance criteria.',
-            text: 'Translate the quality thresholds from the scope into scorecards and sampling rules. Agree how much work will be checked, by whom, how results will be calibrated between onshore and offshore reviewers and how feedback will be given.',
-          },
-          {
-            lead: 'Reporting.',
-            text: 'Specify the daily, weekly and monthly reports the operation will produce, the measures each will contain, the data sources and who receives them. Agree definitions so that both sides interpret the numbers in the same way.',
-          },
-          {
-            lead: 'Business continuity plans.',
-            text: 'Document how the operation will respond to power or connectivity failures, system outages, staff absence, problems accessing the facility and other disruptions. Assign responsibilities, set recovery priorities and plan when the arrangements will be tested.',
-          },
-          'The table below can serve as a pre-launch readiness check. Each item should have a named owner and evidence that it is complete, not just a status of "in progress".',
+          'An offshore team cannot operate on verbal instructions. Before you go live, you need to build the operational playbook.',
+          'Create standard operating procedures (SOPs) for core tasks. These should be written down, stored in an accessible knowledge base, and updated as processes change. Define escalation paths for issues that fall outside the standard process, detailing who the agent should contact and within what timeframe.',
+          'Set up access permissions based on least privilege so staff only see the data they need to do their jobs. Establish quality assurance criteria and the reporting templates that will track performance against those criteria.',
+          'Without these controls in place, you are handing a team a set of tasks without the framework required to execute them consistently.',
         ],
-        table: {
-          headers: ['Area', 'Ready when', 'Evidence to request'],
-          rows: [
-            [
-              'Scope and success measures',
-              'Processes, volumes, hours and quality thresholds are agreed in writing',
-              'Signed scope document and success criteria',
-            ],
-            [
-              'Operating model',
-              'Employment, supervision, ownership and accountability are clear',
-              'Agreed model description and contract terms',
-            ],
-            [
-              'Local due diligence',
-              'Legal, tax, employment and data-protection questions have qualified answers',
-              'Adviser responses and an action log',
-            ],
-            [
-              'Workplace and technology',
-              'Seats, devices, connectivity, power and access are in place and tested',
-              'Technical rehearsal and failover test results',
-            ],
-            ['People', 'Roles are filled and staff have passed competency checks', 'Assessment results and training records'],
-            [
-              'Process and controls',
-              'SOPs, escalation paths, access rules and QA criteria are approved',
-              'Version-controlled documents with named owners',
-            ],
-            [
-              'Reporting and governance',
-              'Reports, meetings and escalation routes are defined',
-              'Sample reporting pack and governance calendar',
-            ],
-            [
-              'Continuity',
-              'Continuity plans are documented and key scenarios have been tested',
-              'Continuity plan and test record',
-            ],
-          ],
-          note: 'Adapt the areas and evidence to your operation. Treat any item without evidence as not ready.',
-        },
       },
       {
         heading: 'Launch in Phases and Review Performance',
         body: [
-          'Moving all of the work offshore on a single date concentrates risk. A phased launch lets the business test the people, processes and technology on a limited scope, fix what does not work and expand only when the evidence supports it.',
-          'The pace of each phase should be set by performance against agreed criteria, not by a calendar fixed in advance.',
+          'Do not attempt to go from zero to full volume on day one. A phased launch is the safest route to operational stability.',
+        ],
+        table: {
+          headers: ['Phase', 'Timeline', 'Objective', 'Key Activities'],
+          rows: [
+            [
+              'Phase 1: Pilot',
+              'Weeks 1 to 4',
+              'Prove the model with a small cohort.',
+              'Process a small volume of live work. Daily QA reviews. Fix systemic issues.',
+            ],
+            [
+              'Phase 2: Ramp',
+              'Weeks 5 to 8',
+              'Scale the team to target capacity.',
+              'Add new cohorts of staff. Transition more processes. Shift to weekly governance calls.',
+            ],
+            [
+              'Phase 3: BAU',
+              'Week 9 onward',
+              'Stabilise and optimise.',
+              'Focus on continuous improvement, SLA adherence, and strategic scaling. Monthly reviews.',
+            ],
+          ],
+        },
+      },
+      {
+        body: [
+          'During the launch phase, daily reviews between the client and the operations manager are essential. As the operation stabilises, you can transition to formal, scheduled service reviews.',
+        ],
+      },
+      {
+        heading: 'Measure What Matters in the First Months',
+        body: [
+          'The metrics you choose at launch tell the team what you care about. Choose too many and nothing stands out. Choose only the final service levels and you will not see problems until they have already reached the customer.',
+          'Agree a short set of measures before go-live, with written definitions that both sides accept. A useful launch scorecard combines leading indicators, which show whether the operation is healthy, with lagging indicators, which show whether it is delivering.',
           {
-            lead: 'Pilot.',
-            text: 'Start with a defined subset of the work, such as one process, one queue or one customer segment, handled by a small group. Keep onshore cover available so that problems do not reach customers. Agree before the pilot starts what results will justify moving forward.',
+            lead: 'Leading indicators.',
+            text: 'Attendance and schedule adherence, progress through the training path, QA scores during nesting, and the number of questions escalated back to headquarters. These move first when something is going wrong.',
           },
           {
-            lead: 'Controlled ramp.',
-            text: 'Add volume, processes or headcount in steps. Before each step, confirm that quality, productivity and stability have held at the current level and that the next group of staff has completed training and competency checks.',
+            lead: 'Lagging indicators.',
+            text: 'Service-level achievement, accuracy, throughput, backlog and customer feedback. These confirm whether the operation is meeting the standard set in the blueprint.',
           },
-          {
-            lead: 'Daily reviews at launch.',
-            text: 'In the early stages, hold short daily reviews between offshore team leads and onshore process owners to cover volumes, quality, escalations and system issues, and agree actions before the next shift.',
-          },
-          {
-            lead: 'Formal service reviews.',
-            text: 'As the operation stabilises, move from daily problem-solving to a structured cycle of operational reviews and periodic service reviews against the agreed measures.',
-          },
-          'Expect performance to dip at each step of the ramp. What matters is whether issues are identified quickly and corrected.',
-          'Define in advance the conditions that would pause the ramp, such as quality falling below threshold for a set period. Agreeing these triggers early removes the pressure to push ahead against the evidence.',
+          'Set a baseline during the pilot rather than importing targets from another site or another provider. Then agree in advance what will trigger a review, for example a sustained drop in quality or a backlog that grows for several days in a row. Clear triggers turn the numbers into decisions instead of discussion.',
+          'Share the same dashboard with both teams. When the client lead and the local operations manager look at identical figures, conversations move from debating the data to agreeing what to do about it.',
         ],
       },
       {
         heading: 'Create a Clear Operating Governance Rhythm',
         body: [
-          'Governance is what keeps an offshore operation aligned with the business once the implementation team has stepped back. Without it, small issues accumulate, priorities drift and the relationship becomes reactive.',
+          'Governance is what keeps the operation aligned with your business objectives over the long term.',
+          'Define who owns what. The client typically owns the strategy, the process rules, and the final acceptance of quality. The provider owns the daily execution, staffing, supervision and reporting.',
+          'Establish a meeting cadence:',
           {
-            lead: 'Owners.',
-            text: 'Name an accountable owner on each side for the overall relationship, for each process and for functions such as quality, workforce planning, IT and security. Owners should have the authority to make decisions, not only to relay messages.',
+            list: [
+              {
+                lead: 'Daily Huddle:',
+                text: 'A 15-minute call between the OBA operations manager and the client lead to discuss yesterday’s performance, today’s volumes, and any immediate blockers.',
+              },
+              {
+                lead: 'Weekly Business Review:',
+                text: 'A 30-to-60-minute call to review the KPI dashboard, quality scores, staffing updates, and continuous improvement initiatives.',
+              },
+              {
+                lead: 'Monthly Strategic Review:',
+                text: 'A higher-level meeting to discuss contract performance, long-term forecasts, and strategic changes to the service.',
+              },
+            ],
           },
-          {
-            lead: 'Meeting cadence.',
-            text: 'Set a regular schedule of meetings, each with a clear purpose and attendees. Shorter-cycle sessions focus on operations, longer-cycle ones on performance and direction.',
-          },
-          {
-            lead: 'Reporting pack.',
-            text: 'Agree a standard set of reports covering volumes, service levels, quality, productivity, attrition, absence, escalations, risks and open actions.',
-          },
-          {
-            lead: 'Issue escalation.',
-            text: 'Define severity levels, response expectations and the route from team leader to senior management on both sides. Everyone should know who to contact when something goes wrong outside normal hours.',
-          },
-          {
-            lead: 'Change control.',
-            text: 'Agree how changes to processes, systems, volumes, hours or headcount are requested, assessed, approved and implemented. Uncontrolled change is a frequent cause of quality problems after launch.',
-          },
-          {
-            lead: 'Service review responsibilities.',
-            text: 'Clarify who prepares the service review, who attends, which decisions it can take and how actions are tracked to completion.',
-          },
-          'A typical rhythm might look like the table below. The exact cadence should reflect the size, complexity and risk of the operation.',
+          'Define how changes to the process will be requested and approved. A formal change control process prevents scope creep and ensures that both parties agree on the impact of new requirements.',
         ],
-        table: {
-          headers: ['Forum', 'Frequency', 'Focus', 'Typical attendees'],
-          rows: [
-            ['Shift handover', 'Each shift', 'Open work, issues and priorities for the next shift', 'Team leaders'],
-            [
-              'Operational review',
-              'Daily at launch, then weekly',
-              'Volumes, quality, escalations, staffing and system issues',
-              'Offshore operations lead and onshore process owners',
-            ],
-            [
-              'Performance review',
-              'Monthly',
-              'Results against targets, trends, risks, improvement actions and change requests',
-              'Operations leads and the quality and workforce planning owners',
-            ],
-            [
-              'Strategic service review',
-              'Quarterly',
-              'Direction, scope changes, capacity planning, commercial terms and relationship health',
-              'Senior sponsors from both sides',
-            ],
-          ],
-          note: 'Illustrative only. Adjust the frequency and attendees to the size and risk of the operation.',
-        },
       },
       {
-        heading: 'Closing: Treat Setup as an Implementation Programme',
+        heading: 'Common Setup Mistakes to Avoid',
         body: [
-          'Setting up an offshore team in Ghana is not a single decision. It is a sequence of business, people, infrastructure, process, governance and risk decisions, each of which shapes the next. Organisations that work through them in order, and test each one before moving on, give their teams the conditions they need to perform.',
-          'The work done before launch is rarely visible to customers, but its absence usually is. It is what separates an operation that delivers from one that is always catching up.',
-          'Ghana offers an English-speaking workforce and a time zone that aligns closely with the UK and Europe. Turning those attributes into dependable delivery depends on how carefully the operation is designed, launched and managed.',
+          'Most setup problems are predictable. They come from skipping steps under time pressure rather than from anything unique to Ghana. The following mistakes appear again and again in offshore programmes.',
+          {
+            lead: 'Recruiting before the scope is fixed.',
+            text: 'Hiring against a vague role description produces a team that fits the job advert rather than the work. Finish the blueprint first.',
+          },
+          {
+            lead: 'Treating professional advice as optional.',
+            text: 'Legal, tax and data protection questions that are deferred during setup tend to resurface later, when they are harder and more expensive to resolve.',
+          },
+          {
+            lead: 'Cutting the nesting period.',
+            text: 'Moving new starters into full production before they are ready saves a few days and often costs weeks in rework, escalations and early attrition.',
+          },
+          {
+            lead: 'Launching at full volume.',
+            text: 'A pilot exposes gaps in process documentation, systems access and escalation paths while the stakes are still low.',
+          },
+          {
+            lead: 'Leaving ownership unclear.',
+            text: 'If nobody knows who approves a process change, who owns the equipment or who is accountable for a missed service level, issues will sit unresolved.',
+          },
+          {
+            lead: 'Ignoring the exit plan.',
+            text: 'Agree at the start how knowledge, data and equipment would be handed back if the arrangement ended. It is far easier to agree this before go-live than during a dispute.',
+          },
+          'None of these mistakes is expensive to avoid at the planning stage. Each becomes expensive once the operation is live.',
+        ],
+      },
+      {
+        heading: 'Closing: Treat Setup as One Programme',
+        body: [
+          'Setting up an offshore team in Ghana is a structured implementation programme. When you treat the legal, infrastructure, recruitment, and governance workstreams as connected parts of the same project, you build an operation that can scale. When you treat it merely as a recruitment task, you build a team that requires constant rescue from headquarters.',
         ],
       },
     ],
@@ -892,87 +858,272 @@ export const INSIGHTS: Insight[] = [
   },
   {
     slug: 'outsourcing-vs-building-offshore-team',
-    title: 'Outsourcing vs Building Your Own Offshore Team: Which Model Makes More Sense?',
+    title: 'Outsourcing vs Building Your Own Offshore Team',
     metaTitle: 'Outsourcing vs Building an Offshore Team',
     metaDescription:
       'Compare outsourcing, direct offshore teams and hybrid models by control, cost, management effort, flexibility and accountability.',
-    category: 'Outsourcing and BPO',
+    category: 'Operational Strategy and Growth',
     publishAt: '2026-11-19T10:00:00Z',
     week: 2,
+    author: 'Open Base Africa Editorial Team',
     primaryKeyword: 'outsourcing vs offshore team',
     keywords: ['managed offshore team', 'captive offshore centre', 'staff augmentation', 'BPO operating model'],
-    readMinutes: 10,
+    readMinutes: 11,
     intro:
-      'The choice between outsourcing and building an offshore team is often framed as a choice between control and cost. That is too narrow. A business needs to decide who will employ people, who will manage daily work, who owns the process, who carries operational risk and how performance will be measured.',
+      'The choice between outsourcing and building an offshore team is often framed as a choice between control and cost. That is too narrow. A business needs to decide who will employ people, who will manage daily work, who owns the process, who carries operational risk, and how performance will be measured.',
     sections: [
       {
-        heading: 'Define the models before comparing them',
         body: [
-          'A BPO or managed service, staff augmentation, direct employment through a local entity, employer-of-record arrangements and hybrid delivery all allocate responsibility differently. Legal review is essential.',
+          'If you believe that outsourcing automatically means losing control, you are looking at the wrong outsourcing providers. If you believe that building a direct team automatically gives you control, you may be underestimating the management burden.',
+          'To make the right decision, you need to separate the commercial model from the operating model. Control depends on governance, accountability, systems and the commercial model, not simply who signs the employment contract.',
         ],
       },
       {
-        heading: 'Outsourcing can reduce setup burden, but scope must be clear',
+        heading: 'Define the Models Before Comparing Them',
         body: [
-          'Vendor responsibility, service levels, change control and transparency need to be agreed in writing for outsourcing to deliver real control.',
+          'The terminology around offshore operations can be confusing. Before you can compare options, you must define them clearly. There are four primary models for establishing an offshore presence.',
+          {
+            lead: '1. Outsourced or Managed Service.',
+            text: 'A provider employs the team, provides the infrastructure, and manages the daily operations against agreed service levels. You buy an outcome. The provider is responsible for recruitment, HR, payroll, facilities, technology, and daily supervision.',
+          },
+          {
+            lead: '2. Direct Offshore Team (Captive Centre).',
+            text: 'You establish your own legal entity in the offshore location, hire the staff directly, and manage the operations yourself. You carry the real estate, HR, payroll, compliance, and management burden.',
+          },
+          {
+            lead: '3. Staff Augmentation.',
+            text: 'A provider supplies individual workers to supplement your existing team. You manage their daily work and priorities, but the provider handles their employment, payroll, and basic HR. This is often used to fill specific skill gaps rather than to build a whole department.',
+          },
+          {
+            lead: '4. Hybrid Model.',
+            text: 'A local partner manages the physical infrastructure, the recruitment pipeline, and the employment risk, while your internal managers retain control of the daily workflow, process design, and quality standards.',
+          },
+          '(Note: Any direct employment or entity setup requires qualified local legal and tax advice. This article is an operational guide, not legal advice.)',
         ],
       },
       {
-        heading: 'A directly managed team can increase ownership, but adds operating work',
+        heading: 'Outsourcing Can Reduce Setup Burden, but Scope Must Be Clear',
         body: [
-          'Recruitment, HR, facilities, payroll, systems, supervision, compliance and continuity all become the client’s responsibility.',
+          'A managed service or BPO model removes the administrative and operational burden of building a team from scratch. You do not need to find an office, negotiate a lease, set up payroll, or hire local HR staff. You buy an outcome, and the provider handles the operational machinery required to deliver it.',
+          'This model is highly effective when the work is well-defined, the processes are stable, and the business wants an accountable partner. It is the fastest route to market.',
+          'However, outsourcing requires a rigorous approach to scope. If you cannot define the service levels, the volume expectations, and the boundaries of the work, the provider will fill that ambiguity with assumptions that may not match your expectations.',
+          'Control in an outsourced model is exercised through the contract, the reporting, and the governance meetings. You may not manage the individual agents on the floor, but you manage the outcomes they deliver, the metrics they report, and the penalties or incentives tied to their performance.',
         ],
       },
       {
-        heading: 'A hybrid model can balance local execution and client ownership',
+        heading: 'A Directly Managed Team Can Increase Ownership, but Adds Operating Work',
         body: [
-          'The key is agreeing which decisions stay with the client and which sit with the local partner.',
+          'Building your own team gives you maximum direct control over the culture, the hiring profile, and the daily management routines. If the operation is highly strategic, involves sensitive intellectual property, or requires deep integration with your headquarters, a captive model can be the right choice.',
+          'However, it is critical to be realistic about the operational burden. When you build a direct team, you are not just hiring staff. You are building an HR department, a facilities management function, and an IT support desk in a foreign country. You must manage local compliance, payroll, lease agreements, and the recruitment pipeline.',
+          'If your internal management team is already stretched thin, building a captive operation can become a constant distraction from your core business. A captive centre requires a dedicated local leadership team on the ground, and those leaders can be expensive and difficult to recruit if you do not have an established local network.',
         ],
       },
       {
-        heading: 'Compare the models across the same criteria',
-        body: [],
+        heading: 'A Hybrid Model Can Balance Local Execution and Client Ownership',
+        body: [
+          'A hybrid model attempts to take the best of both worlds. The client owns the business outcomes, the process design, and the daily management of the work. The local partner handles the physical infrastructure, the recruitment pipeline, and the employment risk.',
+          'This works well for companies that have strong operations leadership but lack the local knowledge or infrastructure to set up an office in Accra. It allows the client to control the work while the partner controls the environment. It is also a useful stepping stone for a company that eventually intends to build a captive centre but wants to test the location first.',
+        ],
+      },
+      {
+        heading: 'Staff Augmentation Fills Gaps, Not Departments',
+        body: [
+          'Staff augmentation is often confused with outsourcing, but the two place responsibility in very different places. In an augmentation arrangement, the provider is the employer on paper. You are the manager in practice.',
+          'That makes augmentation a good fit for specific, well-understood needs: an extra analyst in a team that already works well, a specialist skill for a defined project, or temporary capacity during a peak. The individuals slot into your existing processes, tools and management routines, and your managers direct their work day to day.',
+          'It is a weaker fit when the goal is to build a whole function. Augmented staff still need supervision, coaching, quality checks and cover for absence, and in this model all of that falls to you. If you add ten people this way, you have added ten direct reports to managers who are usually several time zones away.',
+          'Before choosing augmentation, ask who will supervise each person, how quality will be checked, and what happens when someone is ill or leaves. If the honest answer is that nobody has the capacity, a managed or hybrid model is likely to serve you better.',
+        ],
+      },
+      {
+        heading: 'Compare the Models Across the Same Criteria',
+        body: [
+          'To make a decision, compare the models against your specific operating requirements. The table below outlines the general characteristics of each model, though actual responsibility will depend on your specific contract.',
+        ],
         table: {
-          headers: ['Decision factor', 'Outsourced or managed service', 'Direct offshore team', 'Hybrid model'],
+          headers: ['Decision factor', 'Outsourced or managed service', 'Direct offshore team (Captive)', 'Hybrid model'],
           rows: [
             [
               'Daily management',
-              'Provider manages agreed delivery activities. Client retains defined governance and approvals.',
+              'Provider manages agreed delivery activities. Client retains governance and approvals.',
               'Client manages day-to-day operations directly or appoints local leaders.',
               'Responsibilities are split by an agreed operating model.',
             ],
             [
               'Setup responsibility',
               'Often lower client setup burden, depending on scope.',
-              'Client carries more setup responsibility.',
+              'Client carries full setup responsibility for entity, HR, and facilities.',
               'Shared setup with clear workstream ownership.',
             ],
             [
               'Control',
-              'Control is exercised through scope, governance, reporting and contract rights.',
-              'Direct control over internal processes, subject to local employment and legal arrangements.',
-              'Control is shared and must be documented.',
+              'Exercised through scope, governance, reporting and contract rights.',
+              'Direct control over internal processes, subject to local employment law.',
+              'Control is shared and must be documented clearly.',
             ],
             [
               'Management effort',
               'Can reduce internal management workload if service scope is comprehensive.',
-              'Usually requires greater internal capacity for HR, facilities and operations.',
+              'Usually requires significant internal capacity for HR, facilities and operations.',
               'Requires coordination across client and provider teams.',
+            ],
+            [
+              'Financial risk',
+              'Predictable operational expenditure (Opex).',
+              'High capital expenditure (Capex) and long-term lease liabilities.',
+              'Shared financial risk, often with a lower Capex requirement.',
             ],
             [
               'Best fit',
               'When the business wants an accountable partner for defined work.',
-              'When the operation is strategic and the company has capacity to own it.',
+              'When the operation is highly strategic and the company has capacity to own it.',
               'When the company wants local execution with selected internal ownership.',
             ],
           ],
-          note: 'These are general model characteristics. Actual responsibility depends on the contract, legal structure, service scope and operating design.',
         },
       },
       {
-        heading: 'Choose based on the operating capability you want to own',
+        heading: 'The Hidden Work of a Captive Model',
         body: [
-          'Process maturity, internal management capacity, strategic importance, scale and regulatory constraints should drive the decision.',
+          'It is easy to underestimate the complexity of a captive centre. If you choose this model, you are responsible for the entire employee lifecycle in a foreign jurisdiction.',
+          'You must manage the recruitment pipeline, which in Ghana means competing for top graduates. You must design the office layout, manage the landlord, and ensure power and connectivity redundancy. You must implement local HR policies that comply with the Labour Act, process payroll accurately and on time, and manage employee relations.',
+          'You also carry the financial risk of attrition. If you hire 50 people and 10 leave in the first three months, you absorb the cost of the recruitment, the training time, and the lost productivity. In a managed service model, the provider absorbs that risk, which is why their cost per seat often looks higher on paper but may be lower in total cost of ownership.',
+        ],
+      },
+      {
+        heading: 'Compare the Total Cost of Each Model, Not the Headline Rate',
+        body: [
+          'Each model presents its costs differently, which makes direct comparison harder than it looks. A managed service usually quotes a rate per seat or per unit of work. A captive centre shows salaries, rent and equipment as separate lines. Augmentation shows a rate per person. None of these figures is the total cost on its own.',
+          'To compare fairly, build the same cost picture for every model you are considering.',
+          {
+            lead: 'People.',
+            text: 'Salaries, statutory employer costs, benefits, leave cover and any shift premiums, whether you pay them directly or through a provider.',
+          },
+          {
+            lead: 'Environment.',
+            text: 'Office space, utilities, backup power, connectivity, devices, software licences and security.',
+          },
+          {
+            lead: 'Management.',
+            text: 'Local supervisors, quality analysts, trainers and operations managers, plus the time your own leaders will spend directing and overseeing the work.',
+          },
+          {
+            lead: 'Setup and transition.',
+            text: 'Entity registration, professional advice, recruitment campaigns, initial training, travel and the period of reduced productivity while the team learns the work.',
+          },
+          {
+            lead: 'Risk and change.',
+            text: 'Attrition, absence cover, contract exit costs, lease commitments and the cost of scaling up or down when demand changes.',
+          },
+          'Once every model is priced on the same basis, the comparison usually becomes clearer. A higher rate that includes management, infrastructure and attrition risk can be cheaper overall than a lower figure that leaves those costs with you.',
+          'Look at the shape of the cost as well as the total. A captive centre front-loads spending on setup and commits the business to leases and fixed overheads for years. A managed service spreads cost more evenly and can usually flex with volume, within the notice periods agreed in the contract. For a business whose demand is still uncertain, that flexibility has real value, even if it is hard to put a number on it. For a business with stable, long-term volumes, the fixed commitments of a captive centre may be easier to justify.',
+        ],
+      },
+      {
+        heading: 'Questions to Settle Before You Sign',
+        body: [
+          'Whichever model you choose, the agreement should answer the questions that cause most disputes later. Settle them in writing before the team is hired.',
+          {
+            list: [
+              { lead: 'Employment:', text: 'Who is the legal employer of each person, and under which contract terms?' },
+              {
+                lead: 'Supervision:',
+                text: 'Who directs the work day to day, and who handles performance issues and discipline?',
+              },
+              {
+                lead: 'Process ownership:',
+                text: 'Who owns the SOPs, training materials and knowledge base, and who can change them?',
+              },
+              {
+                lead: 'Data and systems:',
+                text: 'Whose systems does the team use, who grants and removes access, and who is responsible for a data incident?',
+              },
+              {
+                lead: 'Equipment and premises:',
+                text: 'Who owns the devices and furniture, and who is responsible for the workplace?',
+              },
+              {
+                lead: 'Performance:',
+                text: 'Which measures apply, how are they defined, and what happens when targets are missed?',
+              },
+              {
+                lead: 'Change:',
+                text: 'How are new processes, extra volume or reduced scope requested, priced and approved?',
+              },
+              {
+                lead: 'Exit:',
+                text: 'If the arrangement ends, how are knowledge, data, equipment and, where relevant, staff handed over?',
+              },
+            ],
+          },
+          'If a provider or an internal sponsor cannot answer these questions clearly, the model is not ready to be chosen yet.',
+        ],
+      },
+      {
+        heading: 'Plan for Change: Moving Between Models Over Time',
+        body: [
+          'The model you start with does not have to be the model you keep. Many businesses begin with a managed or hybrid arrangement to test a location, learn how the work performs offshore and build internal confidence. Some later take more of the operation in-house once the team is stable and the business case is proven.',
+          'If that is a realistic possibility, plan for it from the start. Agree how process documentation, training materials and performance data will be shared, so that knowledge does not sit only with the provider. Discuss whether staff could transfer if the operation moved to a captive model, and what legal and contractual steps that would require in Ghana. Make sure your own managers stay close enough to the work to run it if they ever need to.',
+          'The reverse also happens. A business that built its own team may decide that running facilities, HR and payroll abroad is a distraction, and move to a hybrid or managed model to free its leaders for higher-value work. Either direction is easier when the original arrangement was designed with change in mind.',
+        ],
+      },
+      {
+        heading: 'Match the Model to Your Stage of Growth',
+        body: [
+          'The same model can be the right answer for one business and the wrong answer for another, simply because the two are at different stages. Thinking about where your organisation is today, and where it expects to be in a few years, often narrows the choice quickly.',
+          {
+            lead: 'Early-stage and founder-led businesses.',
+            text: 'Leaders are usually close to the work but short of time, and there is rarely an HR, facilities or legal function to absorb the work of running a foreign office. A managed service or hybrid model lets the business add capacity without building that machinery, and keeps commitments flexible while the business model is still changing.',
+          },
+          {
+            lead: 'Scaling businesses.',
+            text: 'Processes are becoming more stable and volumes more predictable, and the operation may be growing in several functions at once. This is often the point at which a hybrid model makes sense: the business keeps control of process design and quality while a local partner handles the environment, recruitment and employment.',
+          },
+          {
+            lead: 'Established enterprises.',
+            text: 'Larger organisations may already have the internal capability to run international operations, along with procurement, legal and compliance teams that can manage an entity abroad. For strategic or highly sensitive work, a captive centre can be a natural fit, sometimes alongside managed services for more standardised processes.',
+          },
+          'Growth stage is not the only factor, but it is a useful test. A model that demands capabilities the business does not yet have will absorb management attention that the business can rarely spare.',
+        ],
+      },
+      {
+        heading: 'Choose Based on the Operating Capability You Want to Own',
+        body: [
+          'The right model for your business depends on your internal capabilities and your strategic goals.',
+          'Choose a managed service if:',
+          {
+            list: [
+              'You want to expand capacity rapidly without setting up a legal entity.',
+              'You lack the internal HR and facilities management capacity to run a foreign office.',
+              'You want to transfer the risk of local compliance and payroll.',
+              'Your focus is on the outcome and the service level, not the daily management of the team.',
+            ],
+          },
+          'Choose a direct offshore team if:',
+          {
+            list: [
+              'The work is highly confidential or central to your competitive advantage.',
+              'You have a dedicated internal team that is experienced in managing overseas operations.',
+              'You are willing to invest the capital and time required to set up an entity.',
+              'You want complete control over the office culture and hiring profile.',
+            ],
+          },
+          'Choose a hybrid model if:',
+          {
+            list: [
+              'You have strong operations leaders who want to direct the work themselves.',
+              'You do not want to set up an entity, lease an office or run local HR and payroll.',
+              'You want to test a location before deciding whether to build a captive centre.',
+            ],
+          },
+          'Choose staff augmentation if:',
+          {
+            list: [
+              'You need a small number of people to fill specific skill or capacity gaps.',
+              'Your existing managers have the time and tools to supervise them directly.',
+              'The work fits into processes and systems your team already runs well.',
+            ],
+          },
+          'Do not choose a model based on the lowest headline price. Choose the model that allows you to maintain visibility, control, and quality over the work that matters to your business.',
         ],
       },
     ],

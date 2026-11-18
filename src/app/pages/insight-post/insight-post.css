@@ -1,5 +1,6 @@
 /* Insight article page styles */
-.article-body p {
+.article-body p,
+.article-body li {
   font-size: 17px;
   line-height: 1.75;
 }

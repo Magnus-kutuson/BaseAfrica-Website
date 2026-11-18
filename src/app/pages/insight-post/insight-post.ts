@@ -8,7 +8,7 @@ import { Header } from '../../core/header/header';
 import { Footer } from '../../core/footer/footer';
 import { InsightsService } from '../../services/insights';
 import { SeoRouterService } from '../../services/seo';
-import { findInsight } from '../../data/insights';
+import { InsightParagraph, InsightText, findInsight } from '../../data/insights';
 
 const SITE_URL = 'https://openbaseafrica.com';
 
@@ -51,6 +51,14 @@ export class InsightPost {
 
   constructor() {
     effect(() => this.updateSeo());
+  }
+
+  protected listItems(para: InsightParagraph): InsightText[] | null {
+    return typeof para === 'object' && 'list' in para ? para.list : null;
+  }
+
+  protected leadText(para: InsightParagraph): { lead: string; text: string } | null {
+    return typeof para === 'object' && 'lead' in para ? para : null;
   }
 
   private updateSeo(): void {
